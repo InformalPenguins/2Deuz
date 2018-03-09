@@ -55,3 +55,63 @@ MonoBehaviour:
     - 'Coins: {0}'
     - 'Monedas: {0}'
     - "Pi\xE8ces: {0}"
+  - Key: L3.Name
+    Description: 
+    Languages:
+    - Ice
+    - Hielo
+    - La glace
+  - Key: L4.Name
+    Description: 
+    Languages:
+    - Rift
+    - Grieta
+    - Crevasse
+  - Key: L5.Name
+    Description: 
+    Languages:
+    - Cavern
+    - Caverna
+    - Caverne
+  - Key: L6.Name
+    Description: 
+    Languages:
+    - Forest
+    - Bosque
+    - "For\xEAt"
+  - Key: L7.Name
+    Description: 
+    Languages:
+    - Beach
+    - Playa
+    - Plage
+  - Key: L8.Name
+    Description: 
+    Languages:
+    - New Mexico
+    - Nuevo Mexico
+    - Nouveau Mexique
+  - Key: L9.Name
+    Description: 
+    Languages:
+    - The Mine
+    - La mina
+    - La mine
+  - Key: L10.Name
+    Description: 
+    Languages:
+    - Black Widow
+    - Viuda negra
+    - Veuve noire
+  - Key: L1.Desc
+    Description: 
+    Languages:
+    - Uhh... it's cold...
+    - "Uhh ... hace fr\xEDo ..."
+    - Euh ... il fait froid ...
+  - Key: L2.Desc
+    Description: 
+    Languages:
+    - Water plz...
+    - Agua plz ...
+    - Eau plz ...

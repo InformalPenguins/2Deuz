@@ -478,6 +478,10 @@ PlayerSettings:
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   cloudProjectId: 3a8a562b-04c5-4492-ab48-b5e2a8c3fe5b
   projectName: 2Deuz

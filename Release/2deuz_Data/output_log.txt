@@ -1,0 +1,57 @@
+Initialize engine version: 5.5.4p4 (e92bef0ab5a4)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c82)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   22.21.13.8476
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.Advertisements.Unsupported.dll (this message is harmless)
+Loading D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\UnityEngine.Advertisements.Unsupported.dll into Unity Child Domain
+- Completed reload, in  0.026 seconds
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Unity\2Deuz\2Deuz\Release\2deuz_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 5.340593 ms
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.174256 ms
+The Key property on the ShowXxxInfo component on Selected is deprecated and will be removed. Copy the value over to the Text property instead and set Key to empty.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1928.
+Total: 1.837400 ms (FindLiveObjects: 0.152918 ms CreateObjectMapping: 0.091411 ms MarkObjects: 1.570303 ms  DeleteObjects: 0.022088 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.716346 ms
+The Key property on the ShowXxxInfo component on LevelName  is deprecated and will be removed. Copy the value over to the Text property instead and set Key to empty.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+
+Unloading 385 unused Assets to reduce memory usage. Loaded Objects now: 1329.
+Total: 2.320963 ms (FindLiveObjects: 0.132189 ms CreateObjectMapping: 0.164472 ms MarkObjects: 1.301166 ms  DeleteObjects: 0.722115 ms)
+
+LocaliseText and the use of csv files as a way of doing localisation has been replaced. Please convert csv files to Localisation files and code calls from LocaliseText to GlobalLocalisation. See the documentation for further upgrade details.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2a04 -> priority: 1 
