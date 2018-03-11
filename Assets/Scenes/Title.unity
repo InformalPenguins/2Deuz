@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlockingGameObjects:
   - {fileID: 1415579562}
-  SceneName: Menu
+  SceneName: WorldsMenu
 --- !u!114 &1913432703
 MonoBehaviour:
   m_ObjectHideFlags: 0
