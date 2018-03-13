@@ -1,6 +1,7 @@
 ﻿using GameFramework.GameStructure;
 using GameFramework.GameStructure.Colliders;
 using GameFramework.GameStructure.Levels;
+using GameFramework.GameStructure.Levels.ObjectModel;
 using UnityEngine;
 
 namespace InformalPenguins
@@ -21,6 +22,7 @@ namespace InformalPenguins
         public const string MAP_START = "S";
         public const string MAP_EXIT = "E";
 
+        public const string MAP_STAR_X = "C{0}";
         public const string MAP_STAR_1 = "C1";
         public const string MAP_STAR_2 = "C2";
         public const string MAP_STAR_3 = "C3";
@@ -49,9 +51,6 @@ namespace InformalPenguins
         [Tooltip("A prefab for the Carrot (a.k.a. Star).")]
         public GameObject CarrotPrefab;
 
-        public int gridX = 16;
-        public int gridY = 12;
-
         public float initialX = 0;
         public float initialY = 0;
 
@@ -59,17 +58,50 @@ namespace InformalPenguins
         public float tileHeight = .53f;
         private GameObject rabbitGameObject;
         private string[][] levelArray;
+        private LevelInfo levelInfo;
         private Transform tilesTransform;
         void Start() {
             Init();
-            Randomize();
         }
-        void Init() {
+        void Init()
+        {
             Debug.Log("CURRENT LEVEL: " + GameManager.Instance.Levels.Selected.Number);
 
             GameObject empty = new GameObject("TilesContainer");
             empty.transform.SetParent(transform, false);
             tilesTransform = empty.transform;
+
+            LoadLevel(GameManager.Instance.Levels.Selected.Number);
+        }
+
+        public void LoadLevel(int worldId, int levelId)
+        {
+            LevelStructure levelStructure = LevelStructure.get();
+            LevelInfo selectedLevelInfo = null;
+            WorldInfo selectedWorld = null;
+            foreach (WorldInfo wi in levelStructure.worlds)
+            {
+                selectedWorld = wi;
+                if (worldId == wi.id) {
+                    foreach (LevelInfo li in wi.levels)
+                    {
+                        if (levelId == li.id)
+                        {
+                            selectedLevelInfo = li;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (selectedLevelInfo != null) {
+                string filename = selectedLevelInfo.map;
+
+                ResetMapFromFile(filename, selectedLevelInfo);
+            }
+        }
+        public void LoadLevel(int levelId) {
+            this.LoadLevel(GameManager.Instance.Worlds.Selected.Number, levelId);
         }
 
         public void DestroyChildren() {
@@ -94,7 +126,7 @@ namespace InformalPenguins
             carrotObject.transform.SetParent(tilesTransform, false);
             return carrotObject;
         }
-        public void ResetMap(string[][] levelArray)
+        public void ResetMap(string[][] levelArray, LevelInfo levelInfo = null)
         {
             this.levelArray = levelArray;
 
@@ -102,22 +134,31 @@ namespace InformalPenguins
 
             bool hasStart = false, hasExit = false;
             float currentY = initialY;
-            /*
-            //TODO: Move to an external config
-            TODO: MOVE INSIDE THE SWITCH SO FILES CAN HAVE THE STARS LOCATIONS
-            if (!LevelManager.Instance.Level.IsStarWon(1))
+
+            if (levelInfo != null)
             {
-                levelArray[13][1] = MAP_STAR_1;
+                this.levelInfo = levelInfo;
+                levelArray[levelInfo.start.y][levelInfo.start.x] = MAP_START;
+                if (levelInfo.hasBoss)
+                {
+                    hasExit = true;
+                }
+                else
+                {
+                    levelArray[levelInfo.exit.y][levelInfo.exit.x] = MAP_EXIT;
+                }
+
+                if (levelInfo.stars.Length > 0) {
+                    foreach (StarInfo si in levelInfo.stars)
+                    {
+                        if (!LevelManager.Instance.Level.IsStarWon(si.id))
+                        {
+                            levelArray[si.point.y][si.point.x] = string.Format(MAP_STAR_X, si.id);
+                        }
+                    }
+                }
             }
-            if (!LevelManager.Instance.Level.IsStarWon(2))
-            {
-                levelArray[4][9] = MAP_STAR_2;
-            }
-            if (!LevelManager.Instance.Level.IsStarWon(3))
-            {
-                levelArray[2][16] = MAP_STAR_3;
-            }
-            */
+
             //NOTE: This can get nasty, beware.
             for (int i = levelArray.Length - 1; i >= 0; i--)
             {
@@ -182,11 +223,16 @@ namespace InformalPenguins
                 Debug.LogError("Map Tile does not have Exit point.");
             }
 
-            PrintMap();
+            //PrintMap();
         }
-        public void ResetMapFromFile() {
-            string[][] levelArray = FileUtility.readFile(FILENAME);
-            ResetMap(levelArray);
+        public void ResetMapFromFile()
+        {
+            this.ResetMapFromFile(FILENAME);
+        }
+        public void ResetMapFromFile(string filename, LevelInfo levelInfo = null)
+        {
+            string[][] levelArray = FileUtility.readFileAsArray(filename);
+            ResetMap(levelArray, levelInfo);
         }
 
         public void Randomize()
@@ -197,16 +243,128 @@ namespace InformalPenguins
         public void PrintMap()
         {
             string concat = "";
+            //string concatCoords = "";
+            string space = " ";
+            string newLine = "\n";
             int jLen = levelArray[0].Length;
+
             for (int i = levelArray.Length - 1; i >= 0; i--)
             {
                 for (int j = 0; j < jLen; j++)
                 {
-                    concat += levelArray[i][j] + (j == jLen - 1 ? "" : " ");
+                    string currentChar = levelArray[i][j];
+                    space = (j == jLen - 1 ? "" : " ");
+                    concat += currentChar + space;
+                    if (currentChar != MAP_WALL && currentChar != MAP_FLOOR) {
+                        Debug.Log((levelArray[i][j] + "(" + i + ", " + j + ")"));
+                    }
                 }
-                concat += "\n";
+
+                //concatCoords += newLine;
+                concat += newLine;
             }
+            //Debug.Log(concatCoords);
             Debug.Log(concat);
         }
+
+        public void ExportMap()
+        {
+            LevelInfo levelInfo = new LevelInfo();
+            levelInfo.id = GameManager.Instance.Levels.Selected.Number;
+            levelInfo.name = GameManager.Instance.Levels.Selected.Name;
+            levelInfo.map = string.Format("Assets/Resources/Maps/Level_{0}.tile", levelInfo.id);
+
+            int jLen = levelArray[0].Length;
+
+            StarInfo[] starsArray = new StarInfo[3];
+
+            for (int i = levelArray.Length - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < jLen; j++)
+                {
+                    switch (levelArray[i][j])
+                    {
+                        case MAP_STAR_1:
+                            StarInfo star1 = new StarInfo();
+                            star1.id = 1;
+                            MapPoint star1Point = new MapPoint();
+                            star1Point.x = j;
+                            star1Point.y = i;
+                            star1.point = star1Point;
+                            starsArray[0] = star1;
+                            break;
+                        case MAP_STAR_2:
+                            StarInfo star2 = new StarInfo();
+                            star2.id = 2;
+                            MapPoint star2Point = new MapPoint();
+                            star2Point.x = j;
+                            star2Point.y = i;
+                            star2.point = star2Point;
+                            starsArray[1] = star2;
+                            break;
+                        case MAP_STAR_3:
+                            StarInfo star3 = new StarInfo();
+                            star3.id = 2;
+                            MapPoint star3Point = new MapPoint();
+                            star3Point.x = j;
+                            star3Point.y = i;
+                            star3.point = star3Point;
+                            starsArray[2] = star3;
+                            break;
+                        case MAP_START:
+                            MapPoint startPoint = new MapPoint();
+                            startPoint.x = j;
+                            startPoint.y = i;
+
+                            levelInfo.start = startPoint;
+                            break;
+                        case MAP_EXIT:
+                            MapPoint exitPoint = new MapPoint();
+                            exitPoint.x = j;
+                            exitPoint.y = i;
+
+                            levelInfo.exit = exitPoint;
+                            break;
+                    }
+                }
+            }
+
+            levelInfo.stars = starsArray;
+            Debug.Log(JsonUtility.ToJson(levelInfo));
+        }
+        public void previousLevel() {
+            Level level = GameManager.Instance.Levels.Selected;
+            int index = level.Number;
+            int newIndex = index - 1;
+            loadlevel(newIndex);
+        }
+        public void nextLevel()
+        {
+            Level level = GameManager.Instance.Levels.Selected;
+            int index = level.Number;
+            int newIndex = index + 1;
+            loadlevel(newIndex);
+        }
+        private void loadlevel(int index)
+        {
+            Level foundLevel = GameManager.Instance.Levels.GetItem(index);
+            if (foundLevel != null)
+            {
+                GameManager.Instance.Levels.Selected = foundLevel;
+                LoadLevel(index);
+            }
+        }
+        public void DefeatBoss()
+        {
+            int h = levelInfo.exit.x;
+            int w = levelInfo.exit.y;
+
+            GameObject newObject = Instantiate(PrefabExit);
+            newObject.transform.SetParent(tilesTransform, false);
+            newObject.name = EXIT_PREFIX + h + GRID_SEPARATOR + w;
+
+            newObject.transform.position = new Vector3(w * tileWidth + initialX, h * tileHeight + initialY, 0);
+        }
     }
+
 }

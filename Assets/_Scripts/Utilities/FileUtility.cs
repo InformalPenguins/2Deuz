@@ -2,7 +2,7 @@
 
 namespace InformalPenguins {
     public class FileUtility {
-        public static string[][] readFile(string file)
+        public static string[][] readFileAsArray(string file)
         {
             string text = System.IO.File.ReadAllText(file);
             string[] lines = Regex.Split(text, "\r\n");
@@ -15,6 +15,11 @@ namespace InformalPenguins {
                 levelBase[i] = stringsOfLine;
             }
             return levelBase;
+        }
+        public static string readFile(string file)
+        {
+            string text = System.IO.File.ReadAllText(file);
+            return text;
         }
     }
 }
