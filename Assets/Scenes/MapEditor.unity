@@ -1873,7 +1873,7 @@ Prefab:
     - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
         type: 2}
       propertyPath: GameName
-      value: RabbitSaur
+      value: Chester
       objectReference: {fileID: 0}
     - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
         type: 2}
@@ -1888,7 +1888,7 @@ Prefab:
     - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
         type: 2}
       propertyPath: DebugLevel
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
         type: 2}

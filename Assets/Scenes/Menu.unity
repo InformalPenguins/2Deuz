@@ -2441,6 +2441,111 @@ Prefab:
       propertyPath: SceneName
       value: WorldsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.Duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.TransitionType
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: OutConfig.SceneChangeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionOutConfig.AnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: TransitionInConfig.Duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: InConfig.Color.r
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: InConfig.Color.g
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: InConfig.Color.b
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: InConfig.Color.a
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: OutConfig.Color.r
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: OutConfig.Color.g
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: OutConfig.Color.b
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320522879215158, guid: c7ead049c3ed1294fb0030866e641f0a,
+        type: 2}
+      propertyPath: OutConfig.Color.a
+      value: 0.07058824
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7ead049c3ed1294fb0030866e641f0a, type: 2}
   m_IsPrefabParent: 0
@@ -2667,7 +2772,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1345088520420880, guid: 66abb871039a05643a4750c3af2e828b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224574635420639962, guid: 66abb871039a05643a4750c3af2e828b,
         type: 2}

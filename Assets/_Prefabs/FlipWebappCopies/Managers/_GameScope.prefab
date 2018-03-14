@@ -131,7 +131,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c381659b69ec3a040badf531e3a36f73, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c66e18406a75c264f8da4f827a3c3232, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.082
   m_Pitch: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
   LoadLevelDatafromResources: 0
   LevelUnlockMode: 1
   CoinsToUnlockLevels: 10
-  LevelMaster: {fileID: 11400000, guid: 328c6f83fd6fd6042a963431d0b4d171, type: 2}
+  LevelMaster: {fileID: 0}
   NumberedLevelReferences: []
   CharacterSetupMode: 0
   AutoCreateCharacters: 0

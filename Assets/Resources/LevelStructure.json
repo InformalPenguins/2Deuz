@@ -1,1 +1,334 @@
-{"worlds":[{"id":1,"name":"meadow","levels":[{"id":1,"name":"practice_basic_movements","map":"Assets/Resources/Maps/Level_1.tile","stars":[{"id":1,"x":13,"y":1},{"id":2,"x":4,"y":9},{"id":3,"x":2,"y":16}],"start":{"x":1,"y":1},"exit":{"x":16,"y":13}},{"id":2,"name":"practice_run","map":"Assets/Resources/Maps/Level_2.tile","stars":[{"id":1,"x":10,"y":2},{"id":2,"x":8,"y":11},{"id":3,"x":6,"y":10}],"start":{"x":4,"y":5},"exit":{"x":4,"y":9}},{"id":3,"name":"practice_jump","map":"Assets/Resources/Maps/Level_3.tile","stars":[{"id":1,"x":7,"y":6},{"id":2,"x":6,"y":11},{"id":3,"x":7,"y":3}],"start":{"x":13,"y":11},"exit":{"x":9,"y":10}},{"id":4,"name":"practice_challenge","map":"Assets/Resources/Maps/Level_4.tile","stars":[{"id":1,"x":2,"y":9},{"id":2,"x":8,"y":4},{"id":3,"x":10,"y":10}],"start":{"x":3,"y":9},"exit":{"x":10,"y":5}},{"id":5,"name":"practice_boss","map":"Assets/Resources/Maps/Level_5.tile","stars":[],"start":{"x":2,"y":13},"exit":{"x":13,"y":16},"hasBoss":true}]},{"id":2,"name":"snow"},{}]}
+{
+  "worlds": [
+    {
+      "id": 1,
+      "name": "garden",
+      "levels": [
+        {
+          "id": 1,
+          "name": "practice_basic_movements",
+          "map": "Assets/Resources/Maps/Level_1.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 13,
+                "y": 1
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 4,
+                "y": 9
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 16,
+                "y": 2
+              }
+            }
+          ],
+          "start": {
+            "x": 1,
+            "y": 1
+          },
+          "exit": {
+            "x": 16,
+            "y": 13
+          }
+        },
+        {
+          "id": 2,
+          "name": "practice_run",
+          "map": "Assets/Resources/Maps/Level_2.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 10,
+                "y": 2
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 8,
+                "y": 11
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 6,
+                "y": 10
+              }
+            }
+          ],
+          "start": {
+            "x": 4,
+            "y": 5
+          },
+          "exit": {
+            "x": 4,
+            "y": 9
+          }
+        },
+        {
+          "id": 3,
+          "name": "practice_jump",
+          "map": "Assets/Resources/Maps/Level_3.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 7,
+                "y": 6
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 6,
+                "y": 11
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 7,
+                "y": 3
+              }
+            }
+          ],
+          "start": {
+            "x": 13,
+            "y": 11
+          },
+          "exit": {
+            "x": 9,
+            "y": 10
+          }
+        },
+        {
+          "id": 4,
+          "name": "practice_challenge",
+          "map": "Assets/Resources/Maps/Level_4.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 2,
+                "y": 9
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 8,
+                "y": 4
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 10,
+                "y": 10
+              }
+            }
+          ],
+          "start": {
+            "x": 3,
+            "y": 9
+          },
+          "exit": {
+            "x": 10,
+            "y": 5
+          }
+        },
+        {
+          "id": 5,
+          "name": "practice_boss",
+          "map": "Assets/Resources/Maps/Level_5.tile",
+          "stars": [],
+          "start": {
+            "x": 2,
+            "y": 13
+          },
+          "exit": {
+            "x": 13,
+            "y": 16
+          },
+          "hasBoss": true
+        }
+      ]
+    },
+    {
+	  "id": 2,
+      "name": "desert",
+      "levels": [
+        {
+          "id": 6,
+          "name": "practice_basic_movements",
+          "map": "Assets/Resources/Maps/Level_6.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 13,
+                "y": 1
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 4,
+                "y": 9
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 16,
+                "y": 2
+              }
+            }
+          ],
+          "start": {
+            "x": 1,
+            "y": 1
+          },
+          "exit": {
+            "x": 16,
+            "y": 13
+          }
+        },
+        {
+          "id": 7,
+          "name": "practice_run",
+          "map": "Assets/Resources/Maps/Level_7.tile",
+          "stars": [
+            {
+              "id":8,
+              "point": {
+                "x": 10,
+                "y": 2
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 8,
+                "y": 11
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 6,
+                "y": 10
+              }
+            }
+          ],
+          "start": {
+            "x": 4,
+            "y": 5
+          },
+          "exit": {
+            "x": 4,
+            "y": 9
+          }
+        },
+        {
+          "id": 8,
+          "name": "practice_jump",
+          "map": "Assets/Resources/Maps/Level_8.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 7,
+                "y": 6
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 6,
+                "y": 11
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 7,
+                "y": 3
+              }
+            }
+          ],
+          "start": {
+            "x": 13,
+            "y": 11
+          },
+          "exit": {
+            "x": 9,
+            "y": 10
+          }
+        },
+        {
+          "id": 9,
+          "name": "practice_challenge",
+          "map": "Assets/Resources/Maps/Level_9.tile",
+          "stars": [
+            {
+              "id": 1,
+              "point": {
+                "x": 2,
+                "y": 9
+              }
+            },
+            {
+              "id": 2,
+              "point": {
+                "x": 8,
+                "y": 4
+              }
+            },
+            {
+              "id": 3,
+              "point": {
+                "x": 10,
+                "y": 10
+              }
+            }
+          ],
+          "start": {
+            "x": 3,
+            "y": 9
+          },
+          "exit": {
+            "x": 10,
+            "y": 5
+          }
+        },
+        {
+          "id": 10,
+          "name": "practice_boss",
+          "map": "Assets/Resources/Maps/Level_10.tile",
+          "stars": [],
+          "start": {
+            "x": 2,
+            "y": 13
+          },
+          "exit": {
+            "x": 13,
+            "y": 16
+          },
+          "hasBoss": true
+        }
+      ]
+    }
+  ]
+}

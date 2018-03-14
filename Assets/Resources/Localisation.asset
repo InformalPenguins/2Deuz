@@ -28,9 +28,9 @@ MonoBehaviour:
   - Key: L1.Name
     Description: 
     Languages:
-    - Snow
-    - Nieve
-    - Neige
+    - Garden 1
+    - "Jard\xEDn 1"
+    - Jardin 1
   - Key: L2.Name
     Description: 
     Languages:
@@ -115,3 +115,21 @@ MonoBehaviour:
     - Water plz...
     - Agua plz ...
     - Eau plz ...
+  - Key: Game.PressAnyKey
+    Description: 
+    Languages:
+    - Press Any Key
+    - Presiona cualquier tecla
+    - Appuyez sur une touche
+  - Key: W2.Name
+    Description: 
+    Languages:
+    - Desert
+    - Desierto
+    - "D\xE9sert"
+  - Key: W1.Name
+    Description: 
+    Languages:
+    - Garden
+    - "Jard\xEDn"
+    - Jardin
