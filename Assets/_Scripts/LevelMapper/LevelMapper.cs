@@ -3,18 +3,18 @@
 namespace InformalPenguins
 {
     [System.Serializable]
-    public class LevelStructure
+    public class LevelMapper
     {
-        private static LevelStructure _instance;
-        private const string LEVELS_INFO_JSON = "Assets/Resources/LevelStructure.json";
+        private static LevelMapper _instance;
+        private const string LEVEL_MAP_INFO_JSON = "Assets/Resources/LevelMap.json";
 
-        public WorldInfo[] worlds;
+        public WorldMapInfo[] worlds;
 
         private static void CreateFromJSON()
         {
-            _instance = JsonUtility.FromJson<LevelStructure>(FileUtility.readFile(LEVELS_INFO_JSON));
+            _instance = JsonUtility.FromJson<LevelMapper>(FileUtility.readFile(LEVEL_MAP_INFO_JSON));
         }
-        public static LevelStructure get()
+        public static LevelMapper get()
         {
             if (_instance == null)
             {
