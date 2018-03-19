@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212184173471693052}
   - component: {fileID: 61921198215832150}
   - component: {fileID: 50676604927722112}
+  - component: {fileID: 114886067365118468}
   m_Layer: 0
   m_Name: WallTile
   m_TagString: Untagged
@@ -53,15 +54,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 900
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &61921198215832150
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -76,6 +77,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.53, y: 0.53}
+--- !u!114 &114886067365118468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132800399525854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellType: 1
+  point:
+    x: -1
+    y: -1
 --- !u!212 &212184173471693052
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -107,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8d709432ea2c3a54d912b00043e9ff87, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ef07077515a74e54484c56cebcc9059b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

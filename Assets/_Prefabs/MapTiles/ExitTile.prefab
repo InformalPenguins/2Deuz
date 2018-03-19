@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212642497872296708}
   - component: {fileID: 61762100811048820}
   - component: {fileID: 114202669418077980}
+  - component: {fileID: 114854647279948678}
   m_Layer: 0
   m_Name: ExitTile
   m_TagString: Untagged
@@ -67,6 +68,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9328f1af01a11e94393680404d55ee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114854647279948678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896462741598438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellType: 4
+  point:
+    x: -1
+    y: -1
+  isTrigger: 1
 --- !u!212 &212642497872296708
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 
 namespace InformalPenguins { 
-    [System.Serializable]
+    [Serializable]
     public class LevelInfo
     {
         public int id;

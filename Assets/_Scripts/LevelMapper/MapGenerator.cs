@@ -8,10 +8,10 @@ namespace InformalPenguins
 {
     public class MapGenerator : MonoBehaviour
     {
-        //TODO: move to another config.
+        //More like for debugging purposes, not used on game flow
         public string FILENAME = "Assets/Resources/Maps/Level_1.tile";
 
-        public const string TILE_PREFIX = "FLOOR_";
+        public const string FLOOR_PREFIX = "FLOOR_";
         public const string WALL_PREFIX = "WALL_";
         public const string EXIT_PREFIX = "EXIT_";
         public const string START_PREFIX = "START_";
@@ -54,15 +54,21 @@ namespace InformalPenguins
         public float initialX = 0;
         public float initialY = 0;
 
-        public float tileWidth = .53f;
-        public float tileHeight = .53f;
         private GameObject rabbitGameObject;
         private string[][] levelArray;
         private LevelInfo levelInfo;
         private Transform tilesTransform;
+
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position, 1);
+        }
+
         void Start() {
             Init();
         }
+
         void Init()
         {
             Debug.Log("CURRENT LEVEL: " + GameManager.Instance.Levels.Selected.Number);
@@ -113,7 +119,7 @@ namespace InformalPenguins
 
         private GameObject addTile(int i, int j) {
             GameObject tileObject = Instantiate(PrefabTile);
-            tileObject.name = TILE_PREFIX + i + GRID_SEPARATOR + j;
+            tileObject.name = FLOOR_PREFIX + i + GRID_SEPARATOR + j;
             return tileObject;
         }
         private GameObject addCarrot(int currentStar, float currentX, float currentY) {
@@ -171,11 +177,11 @@ namespace InformalPenguins
                         case MAP_WALL:
                             //Note: If modified, C case must be modified too.
                             newObject = Instantiate(PrefabWall);
-                            newObject.name = TILE_PREFIX + i + GRID_SEPARATOR + j;
+                            newObject.name = WALL_PREFIX + i + GRID_SEPARATOR + j;
                             break;
                         case MAP_FLOOR:
                             newObject = Instantiate(PrefabTile);
-                            newObject.name = WALL_PREFIX + i + GRID_SEPARATOR + j;
+                            newObject.name = FLOOR_PREFIX + i + GRID_SEPARATOR + j;
                             break;
                         case MAP_STAR_1:
                         case MAP_STAR_2:
@@ -196,6 +202,7 @@ namespace InformalPenguins
                                 if (rabbitGameObject == null)
                                 {
                                     rabbitGameObject = Instantiate(RabbitPrefab);
+                                    GameManager.Messenger.TriggerMessage(new RabbitAddedMessage(rabbitGameObject));
                                 }
                                 rabbitGameObject.transform.position = new Vector3(currentX, currentY, 0);
                                 rabbitGameObject.transform.SetParent(transform, false);
@@ -209,9 +216,9 @@ namespace InformalPenguins
                     }
                     newObject.transform.SetParent(tilesTransform, false);
                     newObject.transform.position = new Vector3(currentX, currentY, 0);
-                    currentX += tileWidth;
+                    currentX += EditorConstants.TILE_WIDTH;
                 }
-                currentY += tileHeight;
+                currentY += EditorConstants.TILE_HEIGHT;
             }
 
             if (!hasStart)
@@ -223,7 +230,7 @@ namespace InformalPenguins
                 Debug.LogError("Map Tile does not have Exit point.");
             }
 
-            //PrintMap();
+            PrintMap();
         }
         public void ResetMapFromFile()
         {
@@ -363,7 +370,7 @@ namespace InformalPenguins
             newObject.transform.SetParent(tilesTransform, false);
             newObject.name = EXIT_PREFIX + h + GRID_SEPARATOR + w;
 
-            newObject.transform.position = new Vector3(w * tileWidth + initialX, h * tileHeight + initialY, 0);
+            newObject.transform.position = new Vector3(w * EditorConstants.TILE_WIDTH + initialX, h * EditorConstants.TILE_HEIGHT + initialY, 0);
         }
     }
 

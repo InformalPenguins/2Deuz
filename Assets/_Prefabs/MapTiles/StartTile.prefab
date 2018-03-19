@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4072105569991066}
   - component: {fileID: 212521573156602698}
   - component: {fileID: 61010158328011716}
+  - component: {fileID: 114229177673164328}
   m_Layer: 0
   m_Name: StartTile
   m_TagString: Untagged
@@ -55,6 +56,22 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.53, y: 0.53}
+--- !u!114 &114229177673164328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373880956840542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellType: 3
+  point:
+    x: -1
+    y: -1
+  isTrigger: 1
 --- !u!212 &212521573156602698
 SpriteRenderer:
   m_ObjectHideFlags: 1

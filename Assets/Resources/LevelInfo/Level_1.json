@@ -1,0 +1,1 @@
+{"id":1,"name":"<PLACEHOLDER>","map":"Assets/Resources/Maps/Map_1.json","stars":[{"id":1,"point":{"x":1,"y":15}},{"id":2,"point":{"x":1,"y":2}},{"id":3,"point":{"x":0,"y":0}}],"exit":{"x":14,"y":6},"start":{"x":14,"y":13},"hasBoss":false}

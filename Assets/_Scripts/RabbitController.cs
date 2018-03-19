@@ -1,44 +1,40 @@
-﻿using UnityEngine;
+﻿using GameFramework.GameStructure.Levels;
+using UnityEngine;
 
 namespace InformalPenguins
 {
     public class RabbitController : MonoBehaviour
     {
-        public float speed = 1f;
-        private float DelayTimer = 0F;
-        public float InputDelay = .05F;
+        public float MovementSpeed = 1f;
+        private float ySpeed = 0, xSpeed = 0;
 
+        Rigidbody2D MyRigidbody;
         void Start()
         {
+            MyRigidbody = GetComponent<Rigidbody2D>();
         }
 
         void Update()
         {
-            //TODO Move to control
-            float horizontalInput = Input.GetAxis(Constants.INPUT_HORIZONTAL);
-            float verticalInput = Input.GetAxis(Constants.INPUT_VERTICAL);
-            if (Time.time > DelayTimer)
-            {
-                if (Input.GetButton(Constants.INPUT_HORIZONTAL))
-                {
-                    MoveHorizontal(horizontalInput > 0);
-                    DelayTimer = Time.time + InputDelay;
-                }
-                if (Input.GetButton(Constants.INPUT_VERTICAL))
-                {
-                    MoveVertical(verticalInput > 0);
-                    DelayTimer = Time.time + InputDelay;
-                }
+            //TODO: Maybe change this to a listener
+            if (!LevelManager.Instance.IsLevelRunning) {
+                Stop();
             }
         }
-
-        public void MoveVertical(bool up)
+        public void MoveVertical(float vMov)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + (up ? speed : -speed), transform.position.z);
+            ySpeed = MovementSpeed * vMov;
+            MyRigidbody.velocity = new Vector2(xSpeed, ySpeed);
         }
-        public void MoveHorizontal(bool right)
+        public void MoveHorizontal(float hMov)
         {
-            transform.position = new Vector3(transform.position.x + (right ? speed : -speed), transform.position.y, transform.position.z);
+            xSpeed = MovementSpeed * hMov;
+            MyRigidbody.velocity = new Vector2(xSpeed, ySpeed);
+        }
+
+        public void Stop()
+        {
+            MyRigidbody.velocity = new Vector2(0, 0);
         }
     }
 }

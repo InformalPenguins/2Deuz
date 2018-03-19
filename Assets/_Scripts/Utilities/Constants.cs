@@ -7,5 +7,12 @@
 
         public const int DEFAULT_WIDTH = 17;
         public const int DEFAULT_HEIGHT = 15;
+
+        public enum CellType
+        {
+            EMPTY, WALL, GRASS,
+            START, EXIT,
+            CARROT
+        }
     }
 }
