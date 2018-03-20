@@ -51,19 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af816252b04e7fa469a7167fc1e7e13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabTile: {fileID: 1916311650428512, guid: 0a7e354f07bc8e846b5291896bdb2608, type: 2}
-  PrefabWall: {fileID: 1132800399525854, guid: d7e2cb2a50cdce04e8e71a47bd7089ae, type: 2}
-  PrefabStart: {fileID: 1373880956840542, guid: 7016db4de6362ce41b9a0cf7258371bd,
-    type: 2}
-  PrefabExit: {fileID: 1896462741598438, guid: 6a17fb64a0d44d546900a5421ca76c56, type: 2}
   RabbitPrefab: {fileID: 1437724467645180, guid: 03b9fcd5815bed940b7a698bbfaea4ca,
     type: 2}
-  CarrotPrefab: {fileID: 1280992711973048, guid: 40f7ab532c5f0b8498abb21d42399906,
+  mapEditor: {fileID: 114824656725327408, guid: a1e7a672a9a567f488a01491d5135f74,
     type: 2}
-  gridX: 16
-  gridY: 12
-  initialX: -4
-  initialY: -2
-  tileWidth: 0.53
-  tileHeight: 0.53
-  filename: Assets/Resources/Maps/Level_1.tile

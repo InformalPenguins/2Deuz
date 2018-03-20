@@ -6,6 +6,6 @@ namespace InformalPenguins {
     {
         public int id;
         public string name;
-        public LevelInfo[] levels;
+        public int[] levels;
     }
 }

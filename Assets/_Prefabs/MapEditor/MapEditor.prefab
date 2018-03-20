@@ -58,10 +58,9 @@ MonoBehaviour:
   wallPrefab: {fileID: 1132800399525854, guid: d7e2cb2a50cdce04e8e71a47bd7089ae, type: 2}
   carrotPrefab: {fileID: 1280992711973048, guid: 40f7ab532c5f0b8498abb21d42399906,
     type: 2}
-  FILENAME: Assets/Resources/Maps/{0}.json
-  carrots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  exitGameObject: {fileID: 0}
-  startGameObject: {fileID: 0}
+  exitGameObjectPrefab: {fileID: 1896462741598438, guid: 6a17fb64a0d44d546900a5421ca76c56,
+    type: 2}
+  startGameObjectPrefab: {fileID: 1373880956840542, guid: 7016db4de6362ce41b9a0cf7258371bd,
+    type: 2}
+  MAP_FILENAME: Assets/Resources/Maps/Map_{0}.json
+  LEVEL_FILENAME: Assets/Resources/LevelInfo/Level_{0}.json

@@ -1,0 +1,1 @@
+{"id":2,"name":"Level2","map":"Assets/Resources/Maps/Map_2.json","stars":[{"id":1,"point":{"x":1,"y":15}},{"id":2,"point":{"x":5,"y":15}},{"id":3,"point":{"x":11,"y":15}}],"exit":{"x":26,"y":15},"start":{"x":1,"y":1},"hasBoss":false}

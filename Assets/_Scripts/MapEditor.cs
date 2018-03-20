@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameFramework.GameStructure.Colliders;
+using UnityEngine;
 
 namespace InformalPenguins {
     public class MapEditor : MonoBehaviour {
@@ -8,6 +9,8 @@ namespace InformalPenguins {
         public GameObject grassPrefab;
         public GameObject wallPrefab;
         public GameObject carrotPrefab;
+        public GameObject exitGameObjectPrefab;
+        public GameObject startGameObjectPrefab;
 
         //Map Array is serialized into the Below Json file
         private GameObject[][] mapArray;
@@ -15,24 +18,39 @@ namespace InformalPenguins {
         public string MAP_FILENAME = "Assets/Resources/Maps/Map_{0}.json";
         public string LEVEL_FILENAME = "Assets/Resources/LevelInfo/Level_{0}.json";
 
-        string currentLevel = "1";
+        int currentLevelId = 1;
+        int currentMapId = 1;
+        string currentLevelName = "LEVEL_NAME";
+        bool currentHasBoss = false;
+        public bool IsEditor = false;
+        public LevelInfo LevelInfo;
 
-        LevelInfo levelInfo;
-
-        public GameObject[] carrots = new GameObject[3];
-        int currentCarrotIdx = 0;
-        public GameObject exitGameObject;
-        public GameObject startGameObject;
-
+        private int currentCarrotIdx = 0;
+        private GameObject[] carrotsGameObjects = new GameObject[3];
+        private GameObject exitGameObject;
+        private GameObject startGameObject;
+        //private GameObject tilesTransformObject;
+        private Transform tilesTransform;
 
         public static GameObject SELECTED_ENTITY = null;
 
         //public GameObject gridCellHighlight;
 
         private int gridX = 28, gridY = 17;
+
         // Use this for initialization
-        void Start() {
+        void Start()
+        {
+            IsEditor = true;
+
             ResetMap();
+
+            Init();
+        }
+        public void Init()
+        {
+            tilesTransform = new GameObject("TilesParent").transform;
+            //tilesTransform.SetParent(transform);
         }
 
         // Update is called once per frame
@@ -47,7 +65,6 @@ namespace InformalPenguins {
                 {
                     GameObject oldGameObject = hitCollider.transform.gameObject;
                     CellController oldCellController = oldGameObject.GetComponent<CellController>();
-                    Constants.CellType cellType = oldCellController.cellType;
                     GameObject selectedEntity = MapEditor.SELECTED_ENTITY;
                     if (selectedEntity != null)
                     {
@@ -63,8 +80,8 @@ namespace InformalPenguins {
             }
         }
         private GameObject GetTriggerInPoint(MapPoint point) {
-            for (int i = 0; i < carrots.Length; i++) {
-                GameObject carrot = carrots[i];
+            for (int i = 0; i < carrotsGameObjects.Length; i++) {
+                GameObject carrot = carrotsGameObjects[i];
                 if (carrot != null) {
                     if (isInSamePoint(carrot, point))
                     {
@@ -102,14 +119,14 @@ namespace InformalPenguins {
             if (newPrefabController.cellType == oldCellController.cellType) {
                 return;
             } else if (newPrefabController.isTrigger) {
-                ReplaceCell(oldObject, grassPrefab);
+                ReplaceCell(oldObject, grassPrefab); //TODO: Check if walkable is present before replacing with grass
 
                 GameObject newTrigger = AddEntity(oldCellController, newPrefabController);
                 switch (newPrefabController.cellType)
                 {
                     case Constants.CellType.CARROT:
-                        Destroy(carrots[currentCarrotIdx]);
-                        carrots[currentCarrotIdx++] = newTrigger;
+                        Destroy(carrotsGameObjects[currentCarrotIdx]);
+                        carrotsGameObjects[currentCarrotIdx++] = newTrigger;
 
                         if (currentCarrotIdx >= 3) {
                             currentCarrotIdx = 0;
@@ -138,7 +155,7 @@ namespace InformalPenguins {
         private GameObject AddEntity(CellController oldCellController, CellController newPrefabController)
         {
             GameObject newObject = Instantiate(newPrefabController.gameObject);
-            newObject.transform.SetParent(transform, false);
+            newObject.transform.SetParent(tilesTransform, false);
             Vector3 position = oldCellController.gameObject.transform.position;
             newObject.transform.position = position;
 
@@ -149,7 +166,7 @@ namespace InformalPenguins {
             newCellController.point = new MapPoint(x, y);
             return newObject;
         }
-        public void DestroyChildren()
+        public void DestroyMapChildren()
         {
             if (mapArray == null)
             {
@@ -162,8 +179,10 @@ namespace InformalPenguins {
                     Destroy(mapArray[i][j]);
                 }
             }
-
-            foreach (GameObject carrot in carrots)
+        }
+        private void DestroyLevelChildren()
+        {
+            foreach (GameObject carrot in carrotsGameObjects)
             {
                 Destroy(carrot);
             }
@@ -173,7 +192,9 @@ namespace InformalPenguins {
 
         public void ResetMap()
         {
-            DestroyChildren();
+            DestroyMapChildren();
+            DestroyLevelChildren();
+
             GameObject newObject = null;
             float currentX = 0, currentY = 0;
             mapArray = new GameObject[gridY][];
@@ -184,8 +205,8 @@ namespace InformalPenguins {
                 for (int j = 0; j < gridX; j++)
                 {
                     newObject = Instantiate(emptyCellPrefab);
-                    newObject.name = EMPTY + i + MapGenerator.GRID_SEPARATOR + j;
-                    newObject.transform.SetParent(transform, false);
+                    newObject.name = EMPTY + i + EditorConstants.GRID_SEPARATOR + j;
+                    newObject.transform.SetParent(tilesTransform, false);
                     newObject.transform.position = new Vector3(currentX, currentY, 0);
 
                     CellController cellController = newObject.GetComponent<CellController>();
@@ -218,78 +239,139 @@ namespace InformalPenguins {
             wrapper.cells = cellsArray;
             string json = JsonUtility.ToJson(wrapper);
 
-            string filename = getMapFileName(currentLevel);
+            string filename = getMapFileName(currentLevelId);
 
             FileUtility.writeFile(filename, json);
 
             BuildLevelInfo();
         }
         private void BuildLevelInfo() {
-            levelInfo = new LevelInfo();
-            levelInfo.stars = new StarInfo[3];
+            LevelInfo = new LevelInfo();
+            LevelInfo.stars = new StarInfo[3];
 
-            for (int i = 0; i < carrots.Length; i++)
+            for (int i = 0; i < carrotsGameObjects.Length; i++)
             {
-                GameObject carrot = carrots[i];
+                GameObject carrot = carrotsGameObjects[i];
                 if (carrot != null)
                 {
                     CellController cellController = carrot.GetComponent<CellController>();
                     StarInfo carrotInfo = new StarInfo();
                     carrotInfo.id = i + 1;
                     carrotInfo.point = cellController.point;
-                    levelInfo.stars[i] = carrotInfo;
+                    LevelInfo.stars[i] = carrotInfo;
                 }
             }
 
             if (startGameObject != null)
             {
                 CellController cellController = startGameObject.GetComponent<CellController>();
-                levelInfo.start = cellController.point;
+                LevelInfo.start = cellController.point;
             }
-            levelInfo.exit = new MapPoint();
+
+            LevelInfo.exit = new MapPoint();
             if (exitGameObject != null)
             {
                 CellController cellController = exitGameObject.GetComponent<CellController>();
-                levelInfo.exit = cellController.point;
+                LevelInfo.exit = cellController.point;
             }
-            levelInfo.id = int.Parse(currentLevel);
-            levelInfo.name = "<PLACEHOLDER>";
-            levelInfo.hasBoss = false;
-            levelInfo.map = getMapFileName(currentLevel);
+            LevelInfo.id = currentLevelId;
+            LevelInfo.name = currentLevelName;
+            LevelInfo.map = getMapFileName(currentMapId);
+            LevelInfo.hasBoss = currentHasBoss;
 
-            string levelInfoJson = JsonUtility.ToJson(levelInfo);
-            FileUtility.writeFile(getLevelFileName(currentLevel), levelInfoJson);
+            string levelInfoJson = JsonUtility.ToJson(LevelInfo);
+            FileUtility.writeFile(getLevelFileName(currentLevelId), levelInfoJson);
         }
 
-        public string getMapFileName(string lv)
+        public string getMapFileName(int lv)
         {
             return string.Format(MAP_FILENAME, lv);
         }
-        public string getLevelFileName(string lv)
+        public string getLevelFileName(int lv)
         {
             return string.Format(LEVEL_FILENAME, lv);
         }
 
-        public void LoadMap(string lv)
+        public void LoadLevel(int levelId)
         {
-            string filename = getMapFileName(lv);
-            MapEditorWrapper wrapper = JsonUtility.FromJson<MapEditorWrapper>(FileUtility.readFile(filename));
+            string levelFilename = getLevelFileName(levelId);
+            LevelInfo levelInfo = JsonUtility.FromJson<LevelInfo>(FileUtility.readFile(levelFilename));
+            string mapFilename = levelInfo.map;
+            MapEditorWrapper wrapper = JsonUtility.FromJson<MapEditorWrapper>(FileUtility.readFile(mapFilename));
             LoadMap(wrapper);
+            LoadLevel(levelInfo);
         }
 
         public void LoadMap()
         {
-            LoadMap(currentLevel);
+            LoadLevel(currentLevelId);
         }
 
-        public void UpdatedTextBox(UnityEngine.UI.Text newValue)
+
+        private float getWorldY(int pointY)
         {
-            currentLevel = newValue.text;
+            return EditorConstants.TILE_HEIGHT * pointY;
+        }
+        private float getWorldX(int pointX)
+        {
+            return EditorConstants.TILE_WIDTH * pointX;
         }
 
+        public void LoadLevel(LevelInfo levelInfo)
+        {
+            this.LevelInfo = levelInfo;
+
+            DestroyLevelChildren();
+
+            StarInfo[] levelInfoCarrots = levelInfo.stars;
+            AddStart(levelInfo.start);
+            AddExit(levelInfo.exit);
+
+            for (int i = 0; i < levelInfoCarrots.Length; i++) {
+                StarInfo levelInfoCarrot = levelInfoCarrots[i];
+                GameObject newCarrot = AddElement(carrotPrefab, levelInfoCarrot.point);
+                if (newCarrot != null)
+                {
+                    StarCollider carrotStarCollider = newCarrot.GetComponent<StarCollider>();
+                    carrotStarCollider.StarNumber = levelInfoCarrot.id;
+                    carrotsGameObjects[i] = newCarrot;
+                }
+            }
+        }
+        public void AddStart(MapPoint startPoint)
+        {
+            startGameObject = AddElement(startGameObjectPrefab, startPoint);
+        }
+
+        public void AddExit(MapPoint exitPoint)
+        {
+            exitGameObject = AddElement(exitGameObjectPrefab, exitPoint);
+
+            if (!IsEditor && LevelInfo.hasBoss) {
+                ToggleExit(false);
+            }
+        }
+        public void ToggleExit(bool isActive)
+        {
+            exitGameObject.SetActive(isActive);
+        }
+
+        private GameObject AddElement(GameObject prefab, MapPoint point)
+        {
+            if (point.x < 0 || point.y < 0) {
+                return null;
+            }
+
+            GameObject newGameObject = Instantiate(prefab);
+            newGameObject.transform.SetParent(tilesTransform);
+            newGameObject.transform.position = new Vector3(getWorldX(point.x), getWorldY(point.y), 0);
+            CellController cellController = newGameObject.GetComponent<CellController>();
+            cellController.point = point;
+            return newGameObject;
+        }
         public void LoadMap(MapEditorWrapper wrapper)
         {
-            DestroyChildren();
+            DestroyMapChildren();
 
             CellInfo[] cellsArray = wrapper.cells;
             mapArray = new GameObject[gridY][];
@@ -302,8 +384,8 @@ namespace InformalPenguins {
                 CellInfo cell = cellsArray[i];
                 MapPoint point = cell.point;
 
-                float currentX = EditorConstants.TILE_WIDTH * point.x;
-                float currentY = EditorConstants.TILE_HEIGHT * point.y;
+                float currentX = getWorldX(point.x);
+                float currentY = getWorldY(point.y);
 
                 GameObject newObject = null;
 
@@ -320,14 +402,10 @@ namespace InformalPenguins {
                     case Constants.CellType.GRASS:
                         newObject = Instantiate(grassPrefab);
                         break;
-                    case Constants.CellType.CARROT:
-                        newObject = Instantiate(grassPrefab);
-                        GameObject carrot = Instantiate(carrotPrefab);
-                        break;
                 }
 
-                newObject.name = newObject.name + point.y + MapGenerator.GRID_SEPARATOR + point.x;
-                newObject.transform.SetParent(transform, false);
+                newObject.name = newObject.name + point.y + EditorConstants.GRID_SEPARATOR + point.x;
+                newObject.transform.SetParent(tilesTransform, false);
                 newObject.transform.position = new Vector3(currentX, currentY, 0);
 
                 CellController cellController = newObject.GetComponent<CellController>();
@@ -335,6 +413,28 @@ namespace InformalPenguins {
                 cellController.cellType = cell.cellType;
                 mapArray[point.y][point.x] = newObject;
             }
+        }
+
+        public void UpdatedLevelId(UnityEngine.UI.Text newValue)
+        {
+            currentLevelId = int.Parse(newValue.text);
+        }
+
+        public void UpdatedMapId(UnityEngine.UI.Text newValue)
+        {
+            currentMapId = int.Parse(newValue.text);
+        }
+
+        public void UpdatedLevelName(UnityEngine.UI.Text newValue)
+        {
+            currentLevelName = newValue.text;
+        }
+        public void UpdatedHasBoss(UnityEngine.UI.Toggle newValue)
+        {
+            currentHasBoss = newValue.isOn;
+        }
+        public Vector3 getStartTransformPosition() {
+            return startGameObject.transform.position;
         }
     }
 }
