@@ -7,10 +7,17 @@ namespace InformalPenguins
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("OnCollisionEnter2D " + collision.transform.name);
-            if (Constants.TAG_PLAYER.Equals(collision.transform.tag))
+            if (LevelManager.Instance.IsLevelRunning && Constants.TAG_PLAYER.Equals(collision.transform.tag))
             {
+                if (LevelManager.Instance.Level.TimeTarget == 0) {
+                    LevelManager.Instance.Level.Score += 10;
+                    LevelManager.Instance.Level.Score += (int)(Constants.LIMIT_TIME/2 - LevelManager.Instance.SecondsRunning*2);
+                }
+
+                RabbitController rabbitController = collision.gameObject.GetComponent<RabbitController>();
+                rabbitController.GoTo(gameObject);
                 LevelManager.Instance.GameOver(true);
+
             }
         }
     }

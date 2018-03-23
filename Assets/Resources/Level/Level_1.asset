@@ -12,29 +12,18 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   _localisableName:
-    _isLocalised: 0
-    _data: 
+    _isLocalised: 1
+    _data: L1.Name
   _localisableDescription:
-    _isLocalised: 0
-    _data: 
-  _startUnlocked: 0
+    _isLocalised: 1
+    _data: L1.Desc
+  _startUnlocked: 1
   _unlockWithCoins: 1
   _unlockWithPayment: 0
   _unlockWithCompletion: 0
   _valueToUnlock: 0
-  _localisablePrefabs:
-  - LocalisablePrefabType: 1
-    Name: 
-    LocalisablePrefab:
-      _default: {fileID: 1300227160875334, guid: 826174ad65b89484786c5a2c4dd298b0,
-        type: 2}
-      _localisedObjects: []
-  _localisableSprites:
-  - LocalisableSpriteType: 1
-    Name: 
-    LocalisableSprite:
-      _default: {fileID: 21300000, guid: 9ea3a4403d0c30449a95a110be880a25, type: 3}
-      _localisedObjects: []
+  _localisablePrefabs: []
+  _localisableSprites: []
   _variables:
     _boolVariables: []
     _intVariables: []
@@ -44,9 +33,9 @@ MonoBehaviour:
     _Vector3Variables: []
     _colorVariables: []
   _starTotalCount: 3
-  _star1Target: -1
-  _star2Target: -1
-  _star3Target: -1
+  _star1Target: 1
+  _star2Target: 18
+  _star3Target: 25
   _star4Target: 25
   _timeTarget: 0
   _scoreTarget: 0

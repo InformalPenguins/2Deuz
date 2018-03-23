@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace InformalPenguins { 
+﻿namespace InformalPenguins { 
     [System.Serializable]
     public class StarInfo
     {

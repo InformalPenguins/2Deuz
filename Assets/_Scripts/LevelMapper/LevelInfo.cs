@@ -6,10 +6,12 @@ namespace InformalPenguins {
     {
         public int id;
         public string name;
-        public string map;
+        public int map;
         public StarInfo[] stars;
         public MapPoint exit;
         public MapPoint start;
         public bool hasBoss = false;
+
+        public CellInfo[] extras;
     }
 }

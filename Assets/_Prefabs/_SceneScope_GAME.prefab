@@ -20,16 +20,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4139748198583076}
   - component: {fileID: 114199027184700908}
-  - component: {fileID: 114303982779013130}
   - component: {fileID: 114980177324518634}
   - component: {fileID: 114059694940043386}
-  - component: {fileID: 114203258596106994}
   - component: {fileID: 114201357881508404}
   - component: {fileID: 114230624167062514}
-  - component: {fileID: 114723798431759194}
   - component: {fileID: 114560462000355714}
-  - component: {fileID: 114051876751311282}
-  - component: {fileID: 114287782339054576}
+  - component: {fileID: 114189204139123780}
+  - component: {fileID: 114096898979954710}
+  - component: {fileID: 82215618373925604}
+  - component: {fileID: 114166113507247380}
   m_Layer: 0
   m_Name: _SceneScope_GAME
   m_TagString: Untagged
@@ -50,22 +49,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114051876751311282
-MonoBehaviour:
+--- !u!82 &82215618373925604
+AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704371786456726}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5625f012893ad498cee32c1ea934b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetsFromLevelConfig: 0
-  Target1Star: 10
-  Target2Stars: 20
-  Target3Stars: 30
-  Target4Stars: 40
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3a79024b9f29cd14daeaccc8ee05df97, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114059694940043386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,12 +142,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoStart: 1
   ShowGameOverDialogDelay: 0
-  GameOverWhenLivesIsZero: 0
-  GameOverWhenHealthIsZero: 0
+  GameOverWhenLivesIsZero: 1
+  GameOverWhenHealthIsZero: 1
   GameOverWhenTargetTimeReached: 0
   GameWonWhenAllStarsGot: 0
   GameWonWhenTargetScoreReached: 0
   GameWonWhenTargetCoinsReached: 0
+--- !u!114 &114096898979954710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704371786456726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8394c4e3ddc49ed47b3ca0dca8c133ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetsFromLevelConfig: 1
+  Target1Star: 10
+  Target2Stars: 20
+  Target3Stars: 30
+  Target4Stars: 40
+--- !u!114 &114166113507247380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704371786456726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2ac370c5cdfb049b8c082efaac776a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplier: 1
+--- !u!114 &114189204139123780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704371786456726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0e9be7dabe95644be5fc029ef1a313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114199027184700908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,18 +315,6 @@ MonoBehaviour:
     Color: {r: 0, g: 0, b: 0, a: 1}
     SceneChangeMode: 0
     SceneToLoad: 
---- !u!114 &114203258596106994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704371786456726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97ca477b9b7dbc49bfb93994f64f3c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Placement: 2
 --- !u!114 &114230624167062514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,34 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSceneTransitions: []
---- !u!114 &114287782339054576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704371786456726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8394c4e3ddc49ed47b3ca0dca8c133ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetsFromLevelConfig: 0
-  Target1Star: 10
-  Target2Stars: 20
-  Target3Stars: 30
-  Target4Stars: 40
---- !u!114 &114303982779013130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704371786456726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07675f3ecfd4774eac7baacfb8abde2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneName: Menu
 --- !u!114 &114560462000355714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,23 +340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseGlobalLifeCount: 1
   Lives: 0
---- !u!114 &114723798431759194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704371786456726}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea704041db9088409769a5a49cf937a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialogKey: ggez
-  PrefabName: 
-  TitleKey: asdad
-  TextKey: asdasdasd
-  Text2Key: sdasdasd
-  Sprite: {fileID: 0}
 --- !u!114 &114980177324518634
 MonoBehaviour:
   m_ObjectHideFlags: 1

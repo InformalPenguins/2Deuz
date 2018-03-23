@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - STAR
+  - WALL
+  - WALKABLE
+  - HAZARD
   layers:
   - Default
   - TransparentFX
@@ -50,4 +53,7 @@ TagManager:
     locked: 0
   - name: PLAYER
     uniqueID: 3223939971
+    locked: 0
+  - name: ABOVE_PLAYER
+    uniqueID: 1479092511
     locked: 0

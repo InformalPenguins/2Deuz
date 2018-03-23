@@ -1342,7 +1342,7 @@ MonoBehaviour:
   Number: 1
   LegacyDisplayMode: 1
   SelectionMode: 0
-  ClickUnlockedSceneToLoad: Game
+  ClickUnlockedSceneToLoad: GameScene
   CoinColorCanUnlock: {r: 0, g: 1, b: 0, a: 1}
   CoinColorCantUnlock: {r: 1, g: 1, b: 1, a: 1}
   _clickToUnlock: 0
@@ -1598,7 +1598,7 @@ MonoBehaviour:
   Number: 1
   LegacyDisplayMode: 1
   SelectionMode: 0
-  ClickUnlockedSceneToLoad: Game
+  ClickUnlockedSceneToLoad: GameScene
   CoinColorCanUnlock: {r: 0, g: 1, b: 0, a: 1}
   CoinColorCantUnlock: {r: 1, g: 1, b: 1, a: 1}
   _clickToUnlock: 0
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   Number: 1
   LegacyDisplayMode: 1
   SelectionMode: 0
-  ClickUnlockedSceneToLoad: Game
+  ClickUnlockedSceneToLoad: GameScene
   CoinColorCanUnlock: {r: 0, g: 1, b: 0, a: 1}
   CoinColorCantUnlock: {r: 1, g: 1, b: 1, a: 1}
   _clickToUnlock: 0
@@ -3360,7 +3360,7 @@ MonoBehaviour:
   Number: 1
   LegacyDisplayMode: 1
   SelectionMode: 0
-  ClickUnlockedSceneToLoad: Game
+  ClickUnlockedSceneToLoad: GameScene
   CoinColorCanUnlock: {r: 0, g: 1, b: 0, a: 1}
   CoinColorCantUnlock: {r: 1, g: 1, b: 1, a: 1}
   _clickToUnlock: 0
@@ -3615,7 +3615,7 @@ MonoBehaviour:
   Number: 1
   LegacyDisplayMode: 1
   SelectionMode: 0
-  ClickUnlockedSceneToLoad: Game
+  ClickUnlockedSceneToLoad: GameScene
   CoinColorCanUnlock: {r: 0, g: 1, b: 0, a: 1}
   CoinColorCantUnlock: {r: 1, g: 1, b: 1, a: 1}
   _clickToUnlock: 0

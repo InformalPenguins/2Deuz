@@ -28,15 +28,15 @@ MonoBehaviour:
   - Key: L1.Name
     Description: 
     Languages:
-    - Garden 1
-    - "Jard\xEDn 1"
-    - Jardin 1
+    - Walk In
+    - Entrada
+    - Entrer
   - Key: L2.Name
     Description: 
     Languages:
-    - Sand
-    - Desierto
-    - "D\xE9sert"
+    - Flames!
+    - "\xA1Llamas!"
+    - Flammes!
   - Key: label.pause
     Description: 
     Languages:
@@ -58,21 +58,21 @@ MonoBehaviour:
   - Key: L3.Name
     Description: 
     Languages:
-    - Ice
-    - Hielo
-    - La glace
+    - The Wall
+    - La pared
+    - Le mur
   - Key: L4.Name
     Description: 
     Languages:
-    - Rift
-    - Grieta
-    - Crevasse
+    - Dodge Arrows
+    - Dodge Arrows
+    - Dodge Arrows
   - Key: L5.Name
     Description: 
     Languages:
-    - Cavern
-    - Caverna
-    - Caverne
+    - The Snake
+    - La serpiente
+    - Le serpent
   - Key: L6.Name
     Description: 
     Languages:
@@ -106,15 +106,15 @@ MonoBehaviour:
   - Key: L1.Desc
     Description: 
     Languages:
-    - Uhh... it's cold...
-    - "Uhh ... hace fr\xEDo ..."
-    - Euh ... il fait froid ...
+    - Entry Level
+    - Nivel de entrada
+    - "Niveau d'entr\xE9e"
   - Key: L2.Desc
     Description: 
     Languages:
-    - Water plz...
-    - Agua plz ...
-    - Eau plz ...
+    - Meet the hazard Flame.
+    - Conoce el peligro Llama.
+    - Rencontrez le danger Flamme.
   - Key: Game.PressAnyKey
     Description: 
     Languages:
@@ -133,3 +133,21 @@ MonoBehaviour:
     - Garden
     - "Jard\xEDn"
     - Jardin
+  - Key: L3.Desc
+    Description: 
+    Languages:
+    - Cross walls
+    - Paredes cruzadas
+    - Croix murs
+  - Key: L4.Desc
+    Description: 
+    Languages:
+    - Second Hazard, an archer
+    - Segundo peligro, un arquero
+    - Second Hazard, un archer
+  - Key: L5.Desc
+    Description: 
+    Languages:
+    - Final Boss, the Snake.
+    - Final Boss, la serpiente.
+    - Boss final, le serpent.

@@ -56,11 +56,17 @@ MonoBehaviour:
   grassPrefab: {fileID: 1916311650428512, guid: 0a7e354f07bc8e846b5291896bdb2608,
     type: 2}
   wallPrefab: {fileID: 1132800399525854, guid: d7e2cb2a50cdce04e8e71a47bd7089ae, type: 2}
+  walkableWallPrefab: {fileID: 1678811708454228, guid: c5bef84f9e56e8e4c907c5c8f200f479,
+    type: 2}
   carrotPrefab: {fileID: 1280992711973048, guid: 40f7ab532c5f0b8498abb21d42399906,
     type: 2}
   exitGameObjectPrefab: {fileID: 1896462741598438, guid: 6a17fb64a0d44d546900a5421ca76c56,
     type: 2}
   startGameObjectPrefab: {fileID: 1373880956840542, guid: 7016db4de6362ce41b9a0cf7258371bd,
     type: 2}
-  MAP_FILENAME: Assets/Resources/Maps/Map_{0}.json
-  LEVEL_FILENAME: Assets/Resources/LevelInfo/Level_{0}.json
+  carrotSimulatorPrefab: {fileID: 1864921211458514, guid: eb42b5589397a4044a50ece1e7fdc926,
+    type: 2}
+  flamePrefab: {fileID: 1006845363508280, guid: ad8b06751a9afe04f890ddb34290c060,
+    type: 2}
+  archerPrefab: {fileID: 1075163822141680, guid: f519567aa4017964893b88038d306c2e,
+    type: 2}

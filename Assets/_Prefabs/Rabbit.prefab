@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 50758028240629208}
   - component: {fileID: 58711476417842044}
   - component: {fileID: 61349353524036280}
+  - component: {fileID: 61901615832525768}
+  - component: {fileID: 114123621085845400}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Player
@@ -92,6 +94,20 @@ BoxCollider2D:
   m_Offset: {x: 0.043526333, y: -0.07217853}
   serializedVersion: 2
   m_Size: {x: 0.16174021, y: 0.07077335}
+--- !u!61 &61901615832525768
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437724467645180}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.25}
 --- !u!114 &114067558981542146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,7 +119,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ee4e6ade9f4124e888fa605f78637e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 4
+  MovementSpeed: 3
+  AccFactor: 3.5
+  RequiredSpeedForJump: 5
+  MaxWallJump: 3
+  _HarmDelay: 0.5
+--- !u!114 &114123621085845400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437724467645180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3823afb16887e46a4683bbb71eba76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cameras: []
+  Duration: 0.5
+  DecayStart: 0.75
+  Range: {x: 0.15, y: 0.15, z: 1}
 --- !u!212 &212822097405889110
 SpriteRenderer:
   m_ObjectHideFlags: 1

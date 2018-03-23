@@ -237,7 +237,7 @@ MonoBehaviour:
     Max: 5
   - Min: 6
     Max: 10
-  LevelSetupMode: 1
+  LevelSetupMode: 2
   AutoCreateLevels: 0
   NumberOfAutoCreatedLevels: 10
   LoadLevelDatafromResources: 0
