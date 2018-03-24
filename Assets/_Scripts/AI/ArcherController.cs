@@ -50,13 +50,34 @@ namespace InformalPenguins
                 Destroy(gameObject);
             }
         }
-        void Wander()
+
+        //Triggers 
+        bool isPlayerNear = false;
+        bool isPlayerLocated = false;
+        //States
+        bool isWandering = false;
+        //Possibilities
+        void walk()
         {
-            //TODO: Select a spot to wander in the Y-X area
+        }
+        void run()
+        {
+        }
+        void lookAtPoint()
+        {
+        }
+        void shoot()
+        {
+        }
+        //Goals States
+        void AttackPlayer()
+        {
+            if (isPlayerLocated) {
+                shoot();
+            }
         }
 
-
-        void SearchRabbit()
+        void Flee()
         {
             //If Rabbit is near, move back.
             //Dynamic is that this can get harmed by the flame.
