@@ -8,6 +8,7 @@ TagManager:
   - WALL
   - WALKABLE
   - HAZARD
+  - HAZARD_FF
   layers:
   - Default
   - TransparentFX

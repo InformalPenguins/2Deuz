@@ -213,12 +213,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7617fad7027e42f46bb17977dac929b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameName: 2Deuz
+  GameName: RabbitSaur
   PlayWebUrl: 
   PlayMarketUrl: 
   iOSWebUrl: 
   IdentifierBase: 
-  DebugLevel: 1
+  DebugLevel: 2
   SecurePreferences: 0
   PreferencesPassPhrase: 
   AutoConvertUnsecurePrefs: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   DisplayChangeCheckDelay: 0.5
   PlayerSetupMode: 1
   PlayerCount: 1
-  WorldSetupMode: 1
+  WorldSetupMode: 0
   AutoCreateWorlds: 0
   NumberOfAutoCreatedWorlds: 2
   LoadWorldDatafromResources: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
     Max: 10
   LevelSetupMode: 2
   AutoCreateLevels: 0
-  NumberOfAutoCreatedLevels: 10
+  NumberOfAutoCreatedLevels: 5
   LoadLevelDatafromResources: 0
   LevelUnlockMode: 1
   CoinsToUnlockLevels: 10

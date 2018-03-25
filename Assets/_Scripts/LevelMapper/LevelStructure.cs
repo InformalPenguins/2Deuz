@@ -12,7 +12,7 @@ namespace InformalPenguins
 
         private static void CreateFromJSON()
         {
-            _instance = JsonUtility.FromJson<LevelStructure>(FileUtility.readFile(LEVELS_INFO_JSON));
+            _instance = JsonUtility.FromJson<LevelStructure>(FileUtility.ReadFile(LEVELS_INFO_JSON));
         }
         public static LevelStructure get()
         {

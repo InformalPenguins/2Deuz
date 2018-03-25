@@ -11,7 +11,11 @@ namespace InformalPenguins
             {
                 if (LevelManager.Instance.Level.TimeTarget == 0) {
                     LevelManager.Instance.Level.Score += 10;
-                    LevelManager.Instance.Level.Score += (int)(Constants.LIMIT_TIME/2 - LevelManager.Instance.SecondsRunning*2);
+                    int extra = (int)(Constants.LIMIT_TIME - LevelManager.Instance.SecondsRunning * 2);
+                    if (extra <= 0) {
+                        extra = 0;
+                    }
+                    LevelManager.Instance.Level.Score += extra;
                 }
 
                 RabbitController rabbitController = collision.gameObject.GetComponent<RabbitController>();

@@ -39,9 +39,14 @@ namespace InformalPenguins {
         public GameObject carrotPrefab;
         public GameObject exitGameObjectPrefab;
         public GameObject startGameObjectPrefab;
-        public GameObject carrotSimulatorPrefab;
         public GameObject flamePrefab;
         public GameObject archerPrefab;
+        public GameObject extinguisherPrefab;
+        
+        //Editor handlers
+        public GameObject carrotSimulatorPrefab;
+        public GameObject archerSimulator;
+        public GameObject flameSimulator;
 
         void Start()
         {
@@ -442,9 +447,10 @@ namespace InformalPenguins {
         public void LoadLevel(int levelId)
         {
             string levelFilename = getLevelFileName(levelId);
-            LevelInfo levelInfo = JsonUtility.FromJson<LevelInfo>(FileUtility.readFile(levelFilename));
+            LevelInfo levelInfo = JsonUtility.FromJson<LevelInfo>(FileUtility.LoadResource(levelFilename));
+
             string mapFilename = getMapFileName(levelInfo.map);
-            MapEditorWrapper wrapper = JsonUtility.FromJson<MapEditorWrapper>(FileUtility.readFile(mapFilename));
+            MapEditorWrapper wrapper = JsonUtility.FromJson<MapEditorWrapper>(FileUtility.LoadResource(mapFilename));
             LoadMap(wrapper);
             LoadLevel(levelInfo);
         }
@@ -545,22 +551,52 @@ namespace InformalPenguins {
         {
             _exitGameObject.SetActive(isActive);
         }
-        private GameObject getPrefabByCellType(Constants.CellType type) {
+        private GameObject getEditorPrefabByCellType(Constants.CellType type)
+        {
             switch (type)
             {
                 default:
                 case Constants.CellType.GRASS:
                     return grassPrefab;
                 case Constants.CellType.EMPTY:
-                    return  emptyCellPrefab;
+                    return emptyCellPrefab;
                 case Constants.CellType.WALL:
-                    return  wallPrefab;
+                    return wallPrefab;
                 case Constants.CellType.WALKABLE_WALL:
-                    return  walkableWallPrefab;
+                    return walkableWallPrefab;
                 case Constants.CellType.FLAME:
-                    return flamePrefab;
+                    return flameSimulator;
                 case Constants.CellType.ARCHER:
-                    return archerPrefab;
+                    return archerSimulator;
+                case Constants.CellType.EXTINGUISHER:
+                    return extinguisherPrefab;
+            }
+        }
+        private GameObject getPrefabByCellType(Constants.CellType type) {
+            if (IsEditor)
+            {
+                return getEditorPrefabByCellType(type);
+            }
+            else
+            {
+                switch (type)
+                {
+                    default:
+                    case Constants.CellType.GRASS:
+                        return grassPrefab;
+                    //case Constants.CellType.EMPTY:
+                    //    return emptyCellPrefab;
+                    case Constants.CellType.WALL:
+                        return wallPrefab;
+                    case Constants.CellType.WALKABLE_WALL:
+                        return walkableWallPrefab;
+                    case Constants.CellType.FLAME:
+                        return flamePrefab;
+                    case Constants.CellType.ARCHER:
+                        return archerPrefab;
+                    case Constants.CellType.EXTINGUISHER:
+                        return extinguisherPrefab;
+                }
             }
         }
         public void LoadMap(MapEditorWrapper wrapper)

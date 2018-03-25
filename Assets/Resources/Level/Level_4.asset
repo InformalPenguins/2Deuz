@@ -35,7 +35,7 @@ MonoBehaviour:
   _starTotalCount: 3
   _star1Target: 9999
   _star2Target: 9999
-  _star3Target: 100
+  _star3Target: 200
   _star4Target: 25
   _timeTarget: 0
   _scoreTarget: 0

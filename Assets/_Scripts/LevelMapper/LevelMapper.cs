@@ -12,7 +12,7 @@ namespace InformalPenguins
 
         private static void CreateFromJSON()
         {
-            _instance = JsonUtility.FromJson<LevelMapper>(FileUtility.readFile(LEVEL_MAP_INFO_JSON));
+            _instance = JsonUtility.FromJson<LevelMapper>(FileUtility.ReadFile(LEVEL_MAP_INFO_JSON));
         }
         public static LevelMapper get()
         {

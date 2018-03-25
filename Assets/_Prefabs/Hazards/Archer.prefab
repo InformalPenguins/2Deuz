@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1075163822141680}
   m_IsPrefabParent: 1
+--- !u!1 &1029609905452362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4423073479559414}
+  - component: {fileID: 61569273333873602}
+  - component: {fileID: 114463320755214712}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: HAZARD_FF
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1075163822141680
 GameObject:
   m_ObjectHideFlags: 0
@@ -21,9 +38,9 @@ GameObject:
   - component: {fileID: 4683268872414048}
   - component: {fileID: 212770743467404308}
   - component: {fileID: 114986610469957270}
-  - component: {fileID: 61418157258380970}
-  - component: {fileID: 114426615371149058}
-  - component: {fileID: 50016198659159222}
+  - component: {fileID: 114975407977045410}
+  - component: {fileID: 114859278340711394}
+  - component: {fileID: 50643725168171004}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -31,6 +48,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1204718120581772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4744119938687288}
+  - component: {fileID: 114651538108691590}
+  - component: {fileID: 58432633761122426}
+  m_Layer: 0
+  m_Name: Sight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4423073479559414
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029609905452362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4683268872414048}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4683268872414048
 Transform:
   m_ObjectHideFlags: 1
@@ -38,13 +85,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075163822141680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.61, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4744119938687288}
+  - {fileID: 4423073479559414}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50016198659159222
+--- !u!4 &4744119938687288
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204718120581772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4683268872414048}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50643725168171004
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -62,23 +124,59 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61418157258380970
-BoxCollider2D:
+--- !u!58 &58432633761122426
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1075163822141680}
+  m_GameObject: {fileID: 1204718120581772}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.03853759, y: -0.0078080893}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.18563545, y: 0.31293178}
---- !u!114 &114426615371149058
+  m_Radius: 3.7
+--- !u!61 &61569273333873602
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029609905452362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.04, y: -0.011877537}
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.32464373}
+--- !u!114 &114463320755214712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029609905452362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f799ea0abb4de1242ac62d58268dc0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114651538108691590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204718120581772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7237c1f2cc6574a8143bd87fd31435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114859278340711394
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,8 +187,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c1beae492c2949b1b9cc302cc4c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lives: 3
-  _HarmDelay: 0.5
+  arrowPrefab: {fileID: 1753839961219910, guid: b6634a1dda1dc1745b48c0b014b713cb,
+    type: 2}
+  CurrentHP: 1
+  MovSpeed: 3
+  WalkSpeed: 1
+  FireDelay: 1
+  HarmDelay: 1
+  HpPrefab: {fileID: 1430379981500984, guid: ef43bfd22f6982649bb0ed2e266fc6b4, type: 2}
+--- !u!114 &114975407977045410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1075163822141680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08190add2f1ddb409d7e4fa6b1dcd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerNearTrigger: 0
+  isPlayerInSightTrigger: 0
+  isPlayerInShootDistanceTrigger: 0
+  PlayerDistThreshold: 1.5
+  ShootDistThreshold: 2.5
 --- !u!114 &114986610469957270
 MonoBehaviour:
   m_ObjectHideFlags: 1

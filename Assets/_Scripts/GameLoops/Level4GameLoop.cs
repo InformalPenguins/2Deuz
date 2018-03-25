@@ -1,4 +1,5 @@
 ﻿using GameFramework.GameStructure;
+using GameFramework.GameStructure.Levels;
 using GameFramework.Messaging;
 using UnityEngine;
 
@@ -6,27 +7,22 @@ namespace InformalPenguins
 {
     public class Level4GameLoop : MonoBehaviour
     {
-
-        // Use this for initialization
         void Start()
         {
             GameManager.Messenger.AddListener<ArcherDefeatedMessage>(ArcherDefeated);
         }
-
-        private bool ArcherDefeated(BaseMessage message)
+        void OnDestroy()
         {
-            GameObject[] hazards = GameObject.FindGameObjectsWithTag(Constants.TAG_HAZARD);
-            foreach (GameObject hazard in hazards) {
-                hazard.SetActive(false);
+            if (GameManager.Messenger != null)
+            {
+                GameManager.Messenger.RemoveListener<ArcherDefeatedMessage>(ArcherDefeated);
             }
-            
-            return true;
         }
 
-        // Update is called once per frame
-        void Update()
+        public bool ArcherDefeated(BaseMessage message)
         {
-
+            GameManager.Instance.Levels.Selected.Score += 100;
+            return true;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.IO;
+using UnityEngine;
+
 namespace InformalPenguins {
     public class FileUtility {
         public static string[][] readFileAsArray(string file)
@@ -16,11 +18,25 @@ namespace InformalPenguins {
             }
             return levelBase;
         }
-        public static string readFile(string file)
+        public static string ReadFile(string file)
         {
             string text = File.ReadAllText(file);
             return text;
         }
+        public static string LoadResource(string filePath)
+        {
+            string cleanFilePath = sanitizeStringForResource(filePath);
+            TextAsset targetFile = Resources.Load<TextAsset>(cleanFilePath);
+            return targetFile.text;
+        }
+        private static string sanitizeStringForResource(string filePath) {
+            if (filePath == null) {
+                return "";
+            }
+
+            return filePath.Replace(Constants.RESOURCES_PATH, "").Replace(Constants.RESOURCES_EXT, "");
+        }
+        
         public static void writeFile(string file, string content)
         {
             //Write some text to the test.txt file

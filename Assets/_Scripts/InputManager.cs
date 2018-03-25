@@ -18,6 +18,13 @@ namespace InformalPenguins
                 _rabbitController = rabbitObject.GetComponent<RabbitController>();
             }
         }
+        // Unsubscribe from messages 
+        void OnDestroy()
+        {
+            if (GameManager.Messenger != null) { 
+                GameManager.Messenger.RemoveListener<RabbitAddedMessage>(OnRabbitAddedMessage);
+            }
+        }
 
         public bool OnRabbitAddedMessage(BaseMessage message)
         {

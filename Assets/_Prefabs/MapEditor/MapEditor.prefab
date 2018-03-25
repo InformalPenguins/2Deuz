@@ -64,9 +64,15 @@ MonoBehaviour:
     type: 2}
   startGameObjectPrefab: {fileID: 1373880956840542, guid: 7016db4de6362ce41b9a0cf7258371bd,
     type: 2}
-  carrotSimulatorPrefab: {fileID: 1864921211458514, guid: eb42b5589397a4044a50ece1e7fdc926,
-    type: 2}
   flamePrefab: {fileID: 1006845363508280, guid: ad8b06751a9afe04f890ddb34290c060,
     type: 2}
   archerPrefab: {fileID: 1075163822141680, guid: f519567aa4017964893b88038d306c2e,
+    type: 2}
+  extinguisherPrefab: {fileID: 1992623479529816, guid: 761cbb1807abeb848bf9680eeb9ea5f2,
+    type: 2}
+  carrotSimulatorPrefab: {fileID: 1864921211458514, guid: eb42b5589397a4044a50ece1e7fdc926,
+    type: 2}
+  archerSimulator: {fileID: 1907942513807308, guid: 5086113b63e56eb4abe167e2986e9817,
+    type: 2}
+  flameSimulator: {fileID: 1941365807073628, guid: a35c74d017ee9a44ebd090862d950cca,
     type: 2}
