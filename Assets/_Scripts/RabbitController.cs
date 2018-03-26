@@ -24,13 +24,22 @@ namespace InformalPenguins
         private float _ySpeed = 0, _xSpeed = 0;
         private float _lastRunButtonHeld = 0;
 
+        //Animation section
+        private const string EARS_TRIGGER = "IsHidden";
+        private const string DEAD_TRIGGER = "Dead";
+        
+        private int _isVisible = 1;
+        private int _isHidden = 0;
+        private Animator _animator;
+        //End Animation
         void Start()
         {
             _MyRigidbody = GetComponent<Rigidbody2D>();
             _colliders = GetComponents<Collider2D>();
             _jumpedWalls = MaxWallJump;
+            _animator = GetComponent<Animator>();
         }
-        
+
         private void ResetRunning()
         {
             //Debug.Log("Reset Running Speed");
@@ -121,25 +130,13 @@ namespace InformalPenguins
         public void Jump()
         {
             float velocityScalar = _MyRigidbody.velocity.magnitude;
-            if(velocityScalar >= RequiredSpeedForJump)
+            if (velocityScalar >= RequiredSpeedForJump)
             {
                 ResetRunning();
                 SetCollidersActive(false);
             }
         }
 
-        //private void OnTriggerEnter2D(Collider2D collision)
-        //{
-        //    if (collision.gameObject.tag == Constants.TAG_WALKABLE)
-        //    {
-        //        _lastFloor = collision.gameObject;
-        //    }
-
-        //    //if (_isJumping)
-        //    //{
-        //    //    checkJumpTrigger(collision.gameObject);
-        //    //}
-        //}
         public void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == Constants.TAG_WALL)
@@ -147,6 +144,25 @@ namespace InformalPenguins
                 ResetRunning();
             }
         }
+
+
+        public void HideEars(int state)
+        {
+            _isVisible += state;
+            CheckEars();
+        }
+
+        public void ShowEars(int state)
+        {
+            _isHidden += state;
+            CheckEars();
+        }
+
+        private void CheckEars()
+        {
+            _animator.SetBool(EARS_TRIGGER, _isHidden > _isVisible);
+        }
+
         private void SetCollidersActive(bool enabled)
         {
             _isJumping = !enabled;
@@ -191,8 +207,15 @@ namespace InformalPenguins
                 return;
             }
 
+            if (GameManager.Instance.Player.Lives == 1)
+            {
+                _animator.SetTrigger(DEAD_TRIGGER);
+            }
+
             _lastHarm = Time.time;
+
             GameManager.Instance.Player.Lives -= 1;
+
             GetComponent<ShakeCamera>().Shake();
 
             _accFactor = .5f;

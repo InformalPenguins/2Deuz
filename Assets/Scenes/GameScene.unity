@@ -818,31 +818,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
-        type: 2}
-      propertyPath: GameName
-      value: RabbitSaur
-      objectReference: {fileID: 0}
-    - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
-        type: 2}
-      propertyPath: LevelSetupMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
-        type: 2}
-      propertyPath: PlayerSetupMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
-        type: 2}
-      propertyPath: DebugLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114614538102705378, guid: 1dd885417c3aa8243b70b581638eeff1,
-        type: 2}
-      propertyPath: LevelUnlockMode
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dd885417c3aa8243b70b581638eeff1, type: 2}
   m_IsPrefabParent: 0
@@ -884,6 +859,10 @@ Prefab:
     - target: {fileID: 4079505866180000, guid: 9fd05125d97dc2a4fafd8fbf99919c6c, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202710648091106, guid: 9fd05125d97dc2a4fafd8fbf99919c6c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fd05125d97dc2a4fafd8fbf99919c6c, type: 2}
@@ -1394,7 +1373,23 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114059694940043386, guid: dd2f4d0074310b04899198b4b4e67d02,
+        type: 2}
+      propertyPath: GameOverWhenHealthIsZero
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114059694940043386, guid: dd2f4d0074310b04899198b4b4e67d02,
+        type: 2}
+      propertyPath: GameOverWhenTargetTimeReached
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096898979954710, guid: dd2f4d0074310b04899198b4b4e67d02,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114096898979954710, guid: dd2f4d0074310b04899198b4b4e67d02, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: dd2f4d0074310b04899198b4b4e67d02, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1534895133
@@ -1895,6 +1890,11 @@ Prefab:
       propertyPath: objects.Array.data[1]
       value: 
       objectReference: {fileID: 511416270}
+    - target: {fileID: 114095146454533292, guid: 249ed8ca31b40be498fa70683c326607,
+        type: 2}
+      propertyPath: isDebug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 249ed8ca31b40be498fa70683c326607, type: 2}
   m_IsPrefabParent: 0

@@ -6,7 +6,8 @@
         public const string TAG_WALL = "WALL";
         public const string TAG_HAZARD = "HAZARD";
         public const string TAG_HAZARD_FF = "HAZARD_FF";
-
+        public const string TAG_FLAMMABLE = "FLAMMABLE";
+        
         public const string INPUT_HORIZONTAL = "Horizontal";
         public const string INPUT_VERTICAL = "Vertical";
         public const string INPUT_RUN = "Run";
@@ -22,14 +23,24 @@
 
         public const string RESOURCES_PATH = "Assets/Resources/";
         public const string RESOURCES_EXT= ".json";
-        
+
+
+        public const string TRIGGER_FLAME = "Fire";
+
         public enum CellType
         {
             EMPTY, WALL, GRASS,
             START, EXIT,
             CARROT,
             WALKABLE_WALL,
-            FLAME, ARCHER, EXTINGUISHER
+            FLAME, ARCHER, EXTINGUISHER, BONFIRE
+        }
+
+        public enum CarrotsType
+        {
+            NONE,
+            TIME,
+            SCORE
         }
     }
 }

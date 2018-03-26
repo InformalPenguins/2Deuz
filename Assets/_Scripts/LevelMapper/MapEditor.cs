@@ -42,11 +42,13 @@ namespace InformalPenguins {
         public GameObject flamePrefab;
         public GameObject archerPrefab;
         public GameObject extinguisherPrefab;
-        
+        public GameObject bonfirePrefab;
+
         //Editor handlers
         public GameObject carrotSimulatorPrefab;
         public GameObject archerSimulator;
         public GameObject flameSimulator;
+        public GameObject bonfireSimulatorPrefab;
 
         void Start()
         {
@@ -570,6 +572,8 @@ namespace InformalPenguins {
                     return archerSimulator;
                 case Constants.CellType.EXTINGUISHER:
                     return extinguisherPrefab;
+                case Constants.CellType.BONFIRE:
+                    return bonfireSimulatorPrefab; 
             }
         }
         private GameObject getPrefabByCellType(Constants.CellType type) {
@@ -596,6 +600,8 @@ namespace InformalPenguins {
                         return archerPrefab;
                     case Constants.CellType.EXTINGUISHER:
                         return extinguisherPrefab;
+                    case Constants.CellType.BONFIRE:
+                        return bonfirePrefab;
                 }
             }
         }

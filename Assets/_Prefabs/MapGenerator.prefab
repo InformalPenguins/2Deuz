@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4830993669105400}
   - component: {fileID: 114297189018209456}
   - component: {fileID: 114095146454533292}
+  - component: {fileID: 114192051095577900}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -55,7 +56,18 @@ MonoBehaviour:
   objects:
   - {fileID: 0}
   - {fileID: 0}
-  isDebug: 0
+  isDebug: 1
+--- !u!114 &114192051095577900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720598259152944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0e9be7dabe95644be5fc029ef1a313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114297189018209456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,5 +81,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RabbitPrefab: {fileID: 1437724467645180, guid: 03b9fcd5815bed940b7a698bbfaea4ca,
     type: 2}
-  mapEditor: {fileID: 114824656725327408, guid: a1e7a672a9a567f488a01491d5135f74,
+  MapHandler: {fileID: 114824656725327408, guid: a1e7a672a9a567f488a01491d5135f74,
     type: 2}
+  WinCarrotsType: 1

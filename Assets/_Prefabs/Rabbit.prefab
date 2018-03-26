@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 61349353524036280}
   - component: {fileID: 61901615832525768}
   - component: {fileID: 114123621085845400}
+  - component: {fileID: 95561216967604040}
+  - component: {fileID: 114357619867723556}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Player
@@ -40,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437724467645180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.555, y: 5.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,6 +110,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.25}
+--- !u!95 &95561216967604040
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437724467645180}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e4ca4a1c40be4c498ff6fe6b95734e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114067558981542146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,7 +142,7 @@ MonoBehaviour:
   AccFactor: 3.5
   RequiredSpeedForJump: 5
   MaxWallJump: 3
-  _HarmDelay: 0.5
+  HarmDelay: 0.5
 --- !u!114 &114123621085845400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +158,20 @@ MonoBehaviour:
   Duration: 0.5
   DecayStart: 0.75
   Range: {x: 0.15, y: 0.15, z: 1}
+--- !u!114 &114357619867723556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437724467645180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!212 &212822097405889110
 SpriteRenderer:
   m_ObjectHideFlags: 1

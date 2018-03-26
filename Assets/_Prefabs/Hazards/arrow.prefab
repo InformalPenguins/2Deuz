@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58508133090724720}
   - component: {fileID: 50150032013273396}
   - component: {fileID: 114101312564941982}
+  - component: {fileID: 95324492216781330}
   m_Layer: 8
   m_Name: arrow
   m_TagString: HAZARD
@@ -77,6 +78,23 @@ CircleCollider2D:
   m_Offset: {x: -0.035, y: 0.15}
   serializedVersion: 2
   m_Radius: 0.08
+--- !u!95 &95324492216781330
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753839961219910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b326760202c87c4381078c5890ea097, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114101312564941982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  LifeSpan: 5
+  LifeSpan: 500
 --- !u!212 &212437985188038704
 SpriteRenderer:
   m_ObjectHideFlags: 1

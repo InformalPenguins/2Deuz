@@ -9,6 +9,7 @@ TagManager:
   - WALKABLE
   - HAZARD
   - HAZARD_FF
+  - FLAMMABLE
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: COLLECTIBLES
     uniqueID: 2754550093
+    locked: 0
+  - name: BELOW_PLAYER
+    uniqueID: 3948479727
     locked: 0
   - name: PLAYER
     uniqueID: 3223939971

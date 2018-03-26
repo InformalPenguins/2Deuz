@@ -12,18 +12,26 @@ namespace InformalPenguins
         /// </summary>
         [Tooltip("A prefab for the Player.")]
         public GameObject RabbitPrefab;
-        public MapEditor mapEditor;
+        public MapEditor MapHandler;
+        
+        public Constants.CarrotsType WinCarrotsType;
 
         private GameObject rabbitGameObject;
 
+        private static MapGenerator _instance;
+        public static MapGenerator getInstance() {
+            return _instance;
+        }
+
         void Start()
         {
+            _instance = this;
             Init();
         }
 
         void Init()
         {
-            mapEditor.Init();
+            MapHandler.Init();
 
             Debug.Log("CURRENT LEVEL: " + GameManager.Instance.Levels.Selected.Number);
             LoadLevel(GameManager.Instance.Levels.Selected.Number);
@@ -32,7 +40,7 @@ namespace InformalPenguins
 
         public void LoadLevel(int levelId)
         {
-            mapEditor.LoadLevel(levelId);
+            MapHandler.LoadLevel(levelId);
 
             AddPlayer();
         }
@@ -44,7 +52,7 @@ namespace InformalPenguins
                 GameManager.Messenger.TriggerMessage(new RabbitAddedMessage(rabbitGameObject));
             }
 
-            rabbitGameObject.transform.position = mapEditor.getStartTransformPosition();
+            rabbitGameObject.transform.position = MapHandler.getStartTransformPosition();
         }
 
         private void loadlevel(int index)
@@ -74,7 +82,7 @@ namespace InformalPenguins
 
         public void DefeatBoss()
         {
-            mapEditor.ToggleExit(true); 
+            MapHandler.ToggleExit(true); 
         }
     }
 

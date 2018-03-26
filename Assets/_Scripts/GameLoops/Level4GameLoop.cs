@@ -1,7 +1,7 @@
 ﻿using GameFramework.GameStructure;
-using GameFramework.GameStructure.Levels;
 using GameFramework.Messaging;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace InformalPenguins
 {
@@ -9,6 +9,9 @@ namespace InformalPenguins
     {
         void Start()
         {
+            MapGenerator mapGenerator = GetComponent<MapGenerator>();
+            mapGenerator.WinCarrotsType = Constants.CarrotsType.SCORE;
+            Assert.IsNotNull(mapGenerator);
             GameManager.Messenger.AddListener<ArcherDefeatedMessage>(ArcherDefeated);
         }
         void OnDestroy()
@@ -21,6 +24,7 @@ namespace InformalPenguins
 
         public bool ArcherDefeated(BaseMessage message)
         {
+            //Maybe this should be added immediatly instead of based on type of level
             GameManager.Instance.Levels.Selected.Score += 100;
             return true;
         }

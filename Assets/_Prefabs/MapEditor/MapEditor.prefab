@@ -70,9 +70,13 @@ MonoBehaviour:
     type: 2}
   extinguisherPrefab: {fileID: 1992623479529816, guid: 761cbb1807abeb848bf9680eeb9ea5f2,
     type: 2}
+  bonfirePrefab: {fileID: 1277077625394714, guid: 677f076aeab70bc48b5b0f9a82e6418c,
+    type: 2}
   carrotSimulatorPrefab: {fileID: 1864921211458514, guid: eb42b5589397a4044a50ece1e7fdc926,
     type: 2}
   archerSimulator: {fileID: 1907942513807308, guid: 5086113b63e56eb4abe167e2986e9817,
     type: 2}
   flameSimulator: {fileID: 1941365807073628, guid: a35c74d017ee9a44ebd090862d950cca,
+    type: 2}
+  bonfireSimulatorPrefab: {fileID: 1521132470593858, guid: 5290008de8c1e294082c931abc30987b,
     type: 2}

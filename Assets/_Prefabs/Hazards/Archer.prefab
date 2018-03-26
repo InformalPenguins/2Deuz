@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4423073479559414
 Transform:
   m_ObjectHideFlags: 1
@@ -139,7 +139,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.7
+  m_Radius: 4
 --- !u!61 &61569273333873602
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -190,11 +190,12 @@ MonoBehaviour:
   arrowPrefab: {fileID: 1753839961219910, guid: b6634a1dda1dc1745b48c0b014b713cb,
     type: 2}
   CurrentHP: 1
-  MovSpeed: 3
-  WalkSpeed: 1
+  MovSpeed: 3.2
+  WalkSpeed: 1.1
   FireDelay: 1
   HarmDelay: 1
   HpPrefab: {fileID: 1430379981500984, guid: ef43bfd22f6982649bb0ed2e266fc6b4, type: 2}
+  SightObject: {fileID: 1204718120581772}
 --- !u!114 &114975407977045410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,8 +210,8 @@ MonoBehaviour:
   isPlayerNearTrigger: 0
   isPlayerInSightTrigger: 0
   isPlayerInShootDistanceTrigger: 0
-  PlayerDistThreshold: 1.5
-  ShootDistThreshold: 2.5
+  PlayerDistThreshold: 1.6
+  ShootDistThreshold: 2.9
 --- !u!114 &114986610469957270
 MonoBehaviour:
   m_ObjectHideFlags: 1
