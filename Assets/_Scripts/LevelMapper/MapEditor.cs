@@ -45,11 +45,13 @@ namespace InformalPenguins {
         public GameObject bonfirePrefab;
 
         //Editor handlers
+        public GameObject grassSimulatorPrefab;
         public GameObject carrotSimulatorPrefab;
         public GameObject archerSimulator;
         public GameObject flameSimulator;
         public GameObject bonfireSimulatorPrefab;
 
+        private static readonly string tilesParentName = "TilesParent";
         void Start()
         {
             IsEditor = true;
@@ -58,9 +60,20 @@ namespace InformalPenguins {
         }
         public void Init()
         {
-            _tilesTransform = new GameObject("TilesParent").transform;
+            resetTilesParent();
 
             ResetMap();
+        }
+        //private Transform getTilesParent()
+        //{
+        //    return _tilesTransform.transform;
+        //}
+        private void resetTilesParent()
+        {
+            if (_tilesTransform != null) {
+                Destroy(_tilesTransform.gameObject);
+            }
+            _tilesTransform = new GameObject(tilesParentName).transform;
         }
 
         // Update is called once per frame
@@ -89,7 +102,7 @@ namespace InformalPenguins {
             {
                 CellController newCellController = selectedEntity.GetComponent<CellController>();
 
-                if (newCellController.cellType == Constants.CellType.EMPTY) {
+                if (newCellController.CellType == Constants.CellType.EMPTY) {
 
                     DestroyExtra(oldCellController.point);
                 }
@@ -102,7 +115,7 @@ namespace InformalPenguins {
 
                 ReplaceCell(oldGameObject, selectedEntity);
 
-                if (newCellController.cellType == oldCellController.cellType)
+                if (newCellController.CellType == oldCellController.CellType)
                 {
                     return;
                 }
@@ -193,7 +206,7 @@ namespace InformalPenguins {
             CellController oldCellController = oldObject.GetComponent<CellController>();
             CellController newPrefabController = newPrefab.GetComponent<CellController>();
 
-            if (newPrefabController == null || oldCellController == null || newPrefabController.cellType == oldCellController.cellType)
+            if (newPrefabController == null || oldCellController == null || newPrefabController.CellType == oldCellController.CellType)
             {
                 return;
             }
@@ -203,7 +216,7 @@ namespace InformalPenguins {
                 //ReplaceCell(oldObject, grassPrefab); 
 
                 GameObject newTrigger = AddEntity(oldCellController, newPrefabController);
-                switch (newPrefabController.cellType)
+                switch (newPrefabController.CellType)
                 {
                     case Constants.CellType.CARROT:
                         Destroy(_carrotsGameObjects[_currentCarrotIdx]);
@@ -243,7 +256,8 @@ namespace InformalPenguins {
                 if (!oldCellController.isExtra) {
                     Destroy(oldObject);
                 }
-
+                CellController cc = newObject.GetComponent<CellController>();
+                
                 int x = oldCellController.point.x;
                 int y = oldCellController.point.y;
                 mapArray[y][x] = newObject;
@@ -328,6 +342,7 @@ namespace InformalPenguins {
             DestroyMapChildren();
             DestroyLevelChildren();
             DestroyExtrasChildren();
+            resetTilesParent();
 
             GameObject newObject = null;
             float currentX = 0, currentY = 0;
@@ -364,7 +379,7 @@ namespace InformalPenguins {
 
                     CellController cellController = mapArray[i][j].GetComponent<CellController>();
                     CellInfo cellInfo = new CellInfo();
-                    cellInfo.cellType = cellController.cellType;
+                    cellInfo.cellType = cellController.CellType;
                     cellInfo.point = cellController.point;
                     cellsArray[k] = cellInfo;
                 }
@@ -418,7 +433,7 @@ namespace InformalPenguins {
                     CellController cellController = _extrasObjects[i].GetComponent<CellController>();
 
                     CellInfo cellInfo = new CellInfo();
-                    cellInfo.cellType = cellController.cellType;
+                    cellInfo.cellType = cellController.CellType;
                     cellInfo.point = cellController.point;
 
                     cellInfoArray[i] = cellInfo;
@@ -511,7 +526,7 @@ namespace InformalPenguins {
                 cellController.isExtra = true;
                 cellController.reference = i;
                 cellController.point = cellInfo.point;
-                cellController.cellType = cellInfo.cellType;
+                cellController.CellType = cellInfo.cellType;
 
                 _extrasObjects.Add(newExtra);
                 //_carrotsGameObjects[i] = newCarrot;
@@ -559,7 +574,7 @@ namespace InformalPenguins {
             {
                 default:
                 case Constants.CellType.GRASS:
-                    return grassPrefab;
+                    return grassSimulatorPrefab;
                 case Constants.CellType.EMPTY:
                     return emptyCellPrefab;
                 case Constants.CellType.WALL:
@@ -636,7 +651,7 @@ namespace InformalPenguins {
 
                 CellController cellController = newObject.GetComponent<CellController>();
                 cellController.point = point;
-                cellController.cellType = cell.cellType;
+                cellController.CellType = cell.cellType;
                 mapArray[point.y][point.x] = newObject;
             }
         }

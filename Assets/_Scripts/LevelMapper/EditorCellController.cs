@@ -7,7 +7,11 @@ namespace InformalPenguins
     {
         public GameObject normalGameObject;
         public GameObject hoveredGameObject;
-
+        private void Start()
+        {
+            //HACK : Turn off Eraser so it can be displayed in our PanelButtons.
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
         public void SetHovered(bool isHovered)
         {
             normalGameObject.SetActive(!isHovered);

@@ -2,6 +2,7 @@
 using GameFramework.GameStructure;
 using GameFramework.GameStructure.Levels;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace InformalPenguins
 {
@@ -10,39 +11,40 @@ namespace InformalPenguins
     {
         public float MovementSpeed = 1f;
         public float AccFactor = 3.5f;
-        public float RequiredSpeedForJump = 5f;
-        public int MaxWallJump = 3;
         public float HarmDelay = 0.5f;
 
         private float _SpeedDelay = 1f; //How long to wait until turbo is re enabled.
         private float _accFactor = 1;
         private float _lastHarm = 0f;
-        private Collider2D[] _colliders;
         private Rigidbody2D _MyRigidbody;
-        private bool _isJumping = false;
-        private int _jumpedWalls = 0;
         private float _ySpeed = 0, _xSpeed = 0;
         private float _lastRunButtonHeld = 0;
 
         //Animation section
-        private const string EARS_TRIGGER = "IsHidden";
-        private const string DEAD_TRIGGER = "Dead";
-        
+        private const string TRIGGER_HIDDEN = "IsHidden";
+        private const string TRIGGER_DEAD = "Dead";
+        private const string TRIGGER_WALK = "IsWalking";
+        private const string TRIGGER_RUN = "IsRunning";
+        private const string TRIGGER_HARM = "Harm";
+
         private int _isVisible = 1;
         private int _isHidden = 0;
-        private Animator _animator;
+        private Animator _animator = null;
+
+        //private bool _facingRight = true;
         //End Animation
         void Start()
         {
             _MyRigidbody = GetComponent<Rigidbody2D>();
-            _colliders = GetComponents<Collider2D>();
-            _jumpedWalls = MaxWallJump;
             _animator = GetComponent<Animator>();
+            Assert.IsNotNull(_animator);
         }
 
         private void ResetRunning()
         {
             //Debug.Log("Reset Running Speed");
+            _animator.SetBool(TRIGGER_RUN, false);
+            //_animator.SetBool(TRIGGER_WALK, false);
             _lastRunButtonHeld = 0;
         }
 
@@ -53,7 +55,8 @@ namespace InformalPenguins
                 Stop();
             }
         }
-        public void Accelerate(bool isAccelerating) {
+        public void Accelerate(bool isAccelerating)
+        {
             float _runButtonHeld = 0;
             if (isAccelerating)
             {
@@ -86,12 +89,14 @@ namespace InformalPenguins
             }
             else if (_accFactor > Constants.MAX_SPEED)
             {
+                _animator.SetBool(TRIGGER_RUN, true);
                 _accFactor = Constants.MAX_SPEED;
             }
         }
         public void Break()
         {
             _accFactor = 1;
+            _animator.SetBool(TRIGGER_RUN, false);
         }
         public void MoveVertical(float vMov)
         {
@@ -110,41 +115,27 @@ namespace InformalPenguins
                 return;
             }
             Vector2 newVelocity = new Vector2(_xSpeed, _ySpeed);
-            if (Vector2.zero.Equals(newVelocity)) {
+            if (Constants.VECTOR_2_ZERO.Equals(newVelocity))
+            {
+                _animator.SetBool(TRIGGER_WALK, false);
                 ResetRunning();
+            }
+            else
+            {
+                _animator.SetBool(TRIGGER_WALK, true);
             }
             _MyRigidbody.velocity = newVelocity;
         }
-        private bool IsMovementChangeAllowed() {
-            if (_isJumping)
-            {
-                return false;
-            }
+        private bool IsMovementChangeAllowed()
+        {
             return true;
         }
         public void Stop()
         {
-            _MyRigidbody.velocity = Vector2.zero;
+            _MyRigidbody.velocity = Constants.VECTOR_2_ZERO;
+            //_animator.SetBool(TRIGGER_WALK, false);
+            //_animator.SetBool(TRIGGER_RUN, false);
         }
-
-        public void Jump()
-        {
-            float velocityScalar = _MyRigidbody.velocity.magnitude;
-            if (velocityScalar >= RequiredSpeedForJump)
-            {
-                ResetRunning();
-                SetCollidersActive(false);
-            }
-        }
-
-        public void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == Constants.TAG_WALL)
-            {
-                ResetRunning();
-            }
-        }
-
 
         public void HideEars(int state)
         {
@@ -160,39 +151,12 @@ namespace InformalPenguins
 
         private void CheckEars()
         {
-            _animator.SetBool(EARS_TRIGGER, _isHidden > _isVisible);
-        }
-
-        private void SetCollidersActive(bool enabled)
-        {
-            _isJumping = !enabled;
-            foreach (Collider2D collider in _colliders)
+            if (_animator != null)
             {
-                if (!collider.isTrigger)
-                {
-                    collider.enabled = enabled;
-                }
+                _animator.SetBool(TRIGGER_HIDDEN, _isHidden > _isVisible);
             }
-
         }
-        //private void checkJumpTrigger(GameObject obj) {
-        //    if (obj.tag == Constants.TAG_WALKABLE)
-        //    {
-        //        //Landing in a floor
-        //        SetCollidersActive(true);
-        //        // Stop();
-        //    } else if (obj.tag == Constants.TAG_WALL) {
-        //        _jumpedWalls--;
-        //        if (_jumpedWalls <= 0)
-        //        {
-        //            SetCollidersActive(true);
-        //            Stop();
-        //            GoTo(_lastFloor);
-        //            //Damage?
-        //            _jumpedWalls = MaxWallJump;
-        //        }
-        //    }
-        //}
+
         public void GoTo(GameObject obj)
         {
             ResetRunning();
@@ -206,19 +170,41 @@ namespace InformalPenguins
             {
                 return;
             }
+            _animator.SetTrigger(TRIGGER_HARM);
+
+            _lastHarm = Time.time;
 
             if (GameManager.Instance.Player.Lives == 1)
             {
-                _animator.SetTrigger(DEAD_TRIGGER);
+                _animator.SetTrigger(TRIGGER_DEAD);
             }
-
-            _lastHarm = Time.time;
 
             GameManager.Instance.Player.Lives -= 1;
 
             GetComponent<ShakeCamera>().Shake();
 
             _accFactor = .5f;
+        }
+
+
+        private void OnCollisionEnter(Collision2D collision)
+        {
+            if (collision.gameObject.tag == Constants.TAG_WALL)
+            {
+                ResetRunning();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == Constants.TAG_ARROW)
+            {
+                ArrowController ac = collision.gameObject.GetComponent<ArrowController>();
+                if (ac.CanHarm())
+                {
+                    Harm();
+                }
+            }
         }
     }
 }

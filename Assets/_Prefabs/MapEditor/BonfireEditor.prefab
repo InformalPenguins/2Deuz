@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 10
+  CellType: 10
   point:
     x: -1
     y: -1

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 5
+  CellType: 5
   point:
     x: -1
     y: -1
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1479092511
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8c677574d7aafad4cafa3c68d2f50d79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a7ab3aa393cd0c1438ae5936f0518287, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

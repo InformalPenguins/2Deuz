@@ -35,19 +35,18 @@ namespace InformalPenguins
             {
                 Destroy(gameObject);
             }
-            if (!_arrived) { 
+            if (!_arrived)
+            {
                 updateMove();
             }
         }
         private void updateMove()
         {
-            if (_targetPosition == null)
-            {
-                return;
-            }
             float dist = Vector3.Distance(_targetPosition, transform.position);
-            if (dist <= 0.1f) {
+            if (dist <= 0.1f)
+            {
                 _arrived = true;
+                _MyRigidbody.velocity = Constants.VECTOR_3_ZERO;
                 return;
             }
 
@@ -61,45 +60,73 @@ namespace InformalPenguins
             _direction = (_targetPosition - transform.position).normalized;
             transform.up = _direction;
         }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            string tag = collision.gameObject.tag;
-            CellController cellController = null;
-            switch (tag)
-            {
-                case Constants.TAG_PLAYER:
-                    collision.gameObject.SendMessage("Harm");
-                    break;
-                case Constants.TAG_HAZARD:
-                    cellController = collision.gameObject.GetComponentInParent<CellController>();
-                    interactWithHazard(cellController.cellType);
-                    break;
-                case Constants.TAG_FLAMMABLE:
-                    if (HasFire) { 
-                        cellController = collision.gameObject.GetComponentInParent<CellController>();
-                        interactWithFlammable(collision.gameObject, cellController.cellType);
-                    }
-                    break;
-            }
+
+        private bool isMoving() {
+            return !_MyRigidbody.velocity.Equals(Constants.VECTOR_2_ZERO);
         }
-        private void interactWithFlammable(GameObject flammable, Constants.CellType flammableType)
-        {
-            switch (flammableType)
-            {
-                case Constants.CellType.BONFIRE:
-                    flammable.SendMessage("AddFire");
-                    break;
-            }
+
+        public bool CanHarm() {
+            return isMoving() || this.HasFire;
         }
-        private void interactWithHazard(Constants.CellType hazardType)
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    string tag = collision.gameObject.tag;
+        //    CellController cellController = null;
+        //    switch (tag)
+        //    {
+        //        case Constants.TAG_PLAYER:
+        //            if (isMoving() || this.HasFire)
+        //            {
+        //                collision.gameObject.SendMessage("Harm");
+        //            }
+        //            break;
+        //        case Constants.TAG_HAZARD:
+        //            cellController = collision.gameObject.GetComponentInParent<CellController>();
+        //            InteractWithHazard(cellController.cellType);
+        //            break;
+        //        case Constants.TAG_FLAMMABLE:
+        //            if (HasFire)
+        //            {
+        //                cellController = collision.gameObject.GetComponentInParent<CellController>();
+        //                InteractWithFlammable(collision.gameObject, cellController.cellType);
+        //            }
+        //            break;
+        //    }
+        //}
+
+        //public void InteractWithFlammable(GameObject flammable, Constants.CellType flammableType)
+        //{
+        //    switch (flammableType)
+        //    {
+        //        case Constants.CellType.BONFIRE:
+        //            if (HasFire)
+        //            {
+        //                flammable.SendMessage("AddFire");
+        //            }
+        //            break;
+        //    }
+        //}
+
+        public void InteractWithHazard(GameObject obj) {
+            Constants.CellType hazardType = obj.GetComponent<CellController>().CellType;
+            InteractWithHazard(hazardType);
+        }
+        public void InteractWithHazard(Constants.CellType hazardType)
         {
-            switch (hazardType) {
+            switch (hazardType)
+            {
                 case Constants.CellType.FLAME:
                     AddFire();
                     break;
             }
         }
-        private void AddFire() {
+        private void AddFire()
+        {
+            if (HasFire) {
+                return;
+            }
+
             HasFire = true;
             _animator.SetTrigger(Constants.TRIGGER_FLAME);
         }

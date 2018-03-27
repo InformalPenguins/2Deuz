@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 50150032013273396}
   - component: {fileID: 114101312564941982}
   - component: {fileID: 95324492216781330}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: arrow
-  m_TagString: HAZARD
+  m_TagString: ARROW
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  LifeSpan: 500
+  LifeSpan: 5
 --- !u!212 &212437985188038704
 SpriteRenderer:
   m_ObjectHideFlags: 1

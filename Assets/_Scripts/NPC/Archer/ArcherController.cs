@@ -9,6 +9,7 @@ namespace InformalPenguins
     public class ArcherController : MonoBehaviour
     {
         public GameObject arrowPrefab;
+        private Transform _arrowsTransform;
 
         public float CurrentHP = 1;
 
@@ -18,7 +19,7 @@ namespace InformalPenguins
         public float HarmDelay = 1f;
 
         private Rigidbody2D _MyRigidbody;
-        private Vector3 _initialPoint;
+        //private Vector3 _initialPoint; //For wandering
         private float _lastFire = 0f;
         private float _lastHarm = 0f;
 
@@ -26,9 +27,11 @@ namespace InformalPenguins
         HazardHpBarController hpController;
         public GameObject SightObject;
 
+        public static readonly string _arrowsTransformName = "ArcherArrows";
+
         void Start()
         {
-            _initialPoint = transform.position;
+            //_initialPoint = transform.position;
             _MyRigidbody = GetComponent<Rigidbody2D>();
             Assert.IsNotNull(arrowPrefab);
             GameObject HpObj = Instantiate(HpPrefab, transform, false);
@@ -36,16 +39,19 @@ namespace InformalPenguins
             hpController.MaxHP = CurrentHP;
             hpController.CurrentHP = CurrentHP;
             SightObject.SetActive(true);
+
+            initArrowsParent();
         }
 
-        // Update is called once per frame
-        //void Update()
-        //{
-        //    if (LevelManager.Instance.IsLevelRunning)
-        //    {
-        //    }
-        //}
-
+        private void initArrowsParent()
+        {
+            GameObject arrowsParent = GameObject.Find(_arrowsTransformName);
+            if (arrowsParent == null)
+            {
+                arrowsParent = new GameObject(_arrowsTransformName);
+            }
+            _arrowsTransform = arrowsParent.transform;
+        }
         public void Harm()
         {
             if (Time.time - _lastHarm < HarmDelay)
@@ -66,9 +72,8 @@ namespace InformalPenguins
             }
         }
 
-        public void Walk(Vector2 direction) {
-            //Debug.Log("Walking...");
-            //Run(Vector2.zero); //TODO: FIX LATER
+        public void Walk(Vector2 direction)
+        {
             _MyRigidbody.velocity = direction * WalkSpeed;
         }
 
@@ -77,26 +82,28 @@ namespace InformalPenguins
             //transform.LookAt(obj.transform);
         }
 
-        public void Fire(Vector3 targtPosition)
+        public void Fire(Vector3 targetPosition)
         {
-            if (targtPosition == null)
-            {
-                return;
-            }
+            //Vector3 will NEVER be null (just Zero)
+            //if (targetPosition == null)
+            //{
+            //    return;
+            //}
 
             float currentTime = Time.time;
 
-            if (currentTime - _lastFire < FireDelay) {
+            if (currentTime - _lastFire < FireDelay)
+            {
                 return;
             }
 
             _lastFire = Time.time;
-            GameObject arrow = Instantiate(arrowPrefab, transform, false);
-            
+            GameObject arrow = Instantiate(arrowPrefab, transform.position, arrowPrefab.transform.rotation,  _arrowsTransform);
+
             ArrowController arrowController = arrow.GetComponent<ArrowController>();
             if (arrow != null)
             {
-                arrowController.SetTargetPosition(targtPosition);
+                arrowController.SetTargetPosition(targetPosition);
             }
         }
 

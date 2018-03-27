@@ -81,13 +81,6 @@ namespace InformalPenguins
         {
             _rabbitController.Accelerate(Input.GetButton(Constants.INPUT_RUN));
         }
-        private void checkJumping()
-        {
-            if (Input.GetButtonDown(Constants.INPUT_JUMP))
-            {
-                _rabbitController.Jump();
-            }
-        }
 
         private void checkPause() {
 

@@ -239,7 +239,7 @@ MonoBehaviour:
     Max: 10
   LevelSetupMode: 2
   AutoCreateLevels: 0
-  NumberOfAutoCreatedLevels: 5
+  NumberOfAutoCreatedLevels: 7
   LoadLevelDatafromResources: 0
   LevelUnlockMode: 1
   CoinsToUnlockLevels: 10

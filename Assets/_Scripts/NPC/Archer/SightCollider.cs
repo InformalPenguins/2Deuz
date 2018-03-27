@@ -24,18 +24,19 @@ namespace InformalPenguins
                 {
                     //This Null check is to fix the NPE thrown when the game starts and the trigger acts before the Start function.
                     archerAI.DetectPlayer(collisionObj);
+                    gameObject.SetActive(false); //PERFORMANCE TROUBLESHOOTING
                 }
             }
         }
+        //TURNING OFF FOR PERFORMANCE TROUBLESHOOTING
+        //private void OnTriggerExit2D(Collider2D collision)
+        //{
+        //    GameObject collisionObj = collision.gameObject;
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            GameObject collisionObj = collision.gameObject;
-
-            if (collisionObj.tag == Constants.TAG_PLAYER)
-            {
-                archerAI.DetectPlayer(null);
-            }
-        }
+        //    if (collisionObj.tag == Constants.TAG_PLAYER)
+        //    {
+        //        archerAI.DetectPlayer(null);
+        //    }
+        //}
     }
 }

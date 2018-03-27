@@ -30,7 +30,7 @@ namespace InformalPenguins {
             GameObject[] hazards = GameObject.FindGameObjectsWithTag(Constants.TAG_HAZARD);
             foreach (GameObject hazard in hazards)
             {
-                hazard.SendMessageUpwards("Extinguish");
+                hazard.SendMessageUpwards("Extinguish", SendMessageOptions.DontRequireReceiver);
             }
         }
         private void Destroy()

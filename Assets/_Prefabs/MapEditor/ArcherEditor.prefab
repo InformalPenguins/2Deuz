@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61622912424037812}
   m_Layer: 0
   m_Name: ArcherEditor
-  m_TagString: Untagged
+  m_TagString: HAZARD_FF
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 8
+  CellType: 8
   point:
     x: -1
     y: -1

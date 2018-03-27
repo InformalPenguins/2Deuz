@@ -1,19 +1,24 @@
-﻿using UnityEngine;
+﻿using GameFramework.UI.Buttons.Components.AbstractClasses;
+using UnityEngine;
+
 namespace InformalPenguins {  
-    public class PaletteButton : MonoBehaviour {
-        public GameObject tilePrefab;
-
-        // Use this for initialization
-        void Start() {
-
+    public class PaletteButton : OnButtonClick
+    {
+        public GameObject HoverImage;
+        public GameObject TilePrefab;
+        
+        private void OnMouseOver()
+        {
+            HoverImage.SetActive(true);
+        }
+        private void OnMouseExit()
+        {
+            HoverImage.SetActive(false);
         }
 
-        // Update is called once per frame
-        void Update() {
-
-        }
-        public void onClick() {
-            MapEditor.SELECTED_ENTITY = tilePrefab;
+        public override void OnClick()
+        {
+            MapEditor.SELECTED_ENTITY = TilePrefab;
         }
     }
 }

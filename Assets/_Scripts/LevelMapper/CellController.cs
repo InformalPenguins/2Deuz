@@ -3,7 +3,7 @@ namespace InformalPenguins
 {
     public class CellController : MonoBehaviour
     {
-        public Constants.CellType cellType;
+        public Constants.CellType CellType;
         public MapPoint point;
 
         public bool isTrigger = false;

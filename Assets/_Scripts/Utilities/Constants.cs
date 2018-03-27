@@ -1,4 +1,6 @@
-﻿namespace InformalPenguins {
+﻿using UnityEngine;
+
+namespace InformalPenguins {
     public class Constants
     {
         public const string TAG_PLAYER = "Player";
@@ -7,6 +9,7 @@
         public const string TAG_HAZARD = "HAZARD";
         public const string TAG_HAZARD_FF = "HAZARD_FF";
         public const string TAG_FLAMMABLE = "FLAMMABLE";
+        public const string TAG_ARROW = "ARROW";
         
         public const string INPUT_HORIZONTAL = "Horizontal";
         public const string INPUT_VERTICAL = "Vertical";
@@ -26,6 +29,11 @@
 
 
         public const string TRIGGER_FLAME = "Fire";
+
+        
+        //Vector3.zero keeps generating a new Vector every get
+        public static readonly Vector3 VECTOR_3_ZERO = new Vector3(0, 0, 0);
+        public static readonly Vector2 VECTOR_2_ZERO = new Vector2(0, 0);
 
         public enum CellType
         {

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95177957128023366}
   - component: {fileID: 114454544006767134}
   - component: {fileID: 114209912258342498}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Flame
   m_TagString: HAZARD
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 95701893738960060}
   - component: {fileID: 58829313066643514}
   - component: {fileID: 114775063047479254}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Flame
   m_TagString: HAZARD
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0873f0de097ca5d43a0db28147d489b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 7
+  CellType: 7
   point:
     x: -1
     y: -1

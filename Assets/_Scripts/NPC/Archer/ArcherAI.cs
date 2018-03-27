@@ -76,12 +76,12 @@ namespace InformalPenguins
                 TriggerUpdate();
             }
         }
-        private void LateUpdate()
-        {
+
+        private void LateUpdate() {
             checkPlayerDistance(_targetPlayer);
         }
-        public void DetectPlayer(GameObject player)
-        {
+
+        public void DetectPlayer(GameObject player) {
             _targetPlayer = player;
             if (player == null)
             {
@@ -94,8 +94,7 @@ namespace InformalPenguins
             isPlayerInSightTrigger = true;
         }
 
-        public void checkPlayerDistance(GameObject player)
-        {
+        public void checkPlayerDistance(GameObject player) {
             if (player == null)
             {
                 isPlayerNearTrigger = false;
@@ -108,7 +107,6 @@ namespace InformalPenguins
             isPlayerNearTrigger = dist < PlayerDistThreshold;
             isPlayerInShootDistanceTrigger = dist < ShootDistThreshold;
         }
-
         //Possibilities
 
         //For wandering purposes
@@ -116,20 +114,24 @@ namespace InformalPenguins
         {
             _archerController.Walk(direction);
         }
+
         //For flee purposes
         void run(Vector3 direction)
         {
             _archerController.Run(direction);
         }
+
         //Look at methods will register the target to get action into
         void lookAtPoint()
         {
             //_archerController.LookAt();
         }
+
         void lookAtPlayer(GameObject player)
         {
             _archerController.LookAt(player);
         }
+
         void Fire(Vector3 spot)
         {
             _archerController.Fire(spot);
@@ -146,19 +148,19 @@ namespace InformalPenguins
                 }
                 else
                 {
-                    walk(Vector3.zero);
+                    walk(Constants.VECTOR_3_ZERO);
                     Fire(_targetPlayer.transform.position); //fire arrows to the spot the player is
                 }
             }
         }
+
         private void chase()
         {
             if (_targetPlayer != null)
             {
+                //run towards the flee point
                 Vector3 direction = _targetPlayer.transform.position - transform.position;
-                //Debug.Log(direction);
-                Debug.Log(direction.normalized);
-                walk(direction.normalized); //run towards the flee point
+                walk(direction.normalized);
             }
         }
 
@@ -169,7 +171,7 @@ namespace InformalPenguins
             //{
             lookAtPoint();//localize a spot to walk to
             //If no target is set for wandering, then stay there.
-            walk(Vector3.zero); //walk to the next spot
+            walk(Constants.VECTOR_3_ZERO); //walk to the next spot
             //}
         }
 

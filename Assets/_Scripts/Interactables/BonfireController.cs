@@ -47,5 +47,17 @@ namespace InformalPenguins
             BonfireChangedMessage msg = new BonfireChangedMessage(_isTurnedOn);
             GameManager.Messenger.QueueMessage(msg);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == Constants.TAG_ARROW)
+            {
+                if (collision.gameObject.GetComponentInParent<ArrowController>().HasFire)
+                {
+                    //collision.gameObject.SendMessageUpwards("InteractWithFlammable", gameObject);
+                    AddFire();
+                }
+            }
+        }
     }
 }
